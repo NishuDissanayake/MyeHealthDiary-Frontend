@@ -1,0 +1,49 @@
+import React, { useState } from 'react';
+import './navbar.css';
+import {
+    MDBNavbar,
+    MDBContainer,
+    MDBNavbarBrand,
+    MDBIcon,
+    MDBNavbarNav,
+    MDBNavbarItem,
+    MDBNavbarLink,
+    MDBNavbarToggler,
+    MDBCollapse
+} from 'mdb-react-ui-kit';
+
+export default function Navbar() {
+    const [showNavText, setShowNavText] = useState(false);
+
+    return (
+        <MDBNavbar expand='lg' className='navbarCol'>
+            <MDBContainer>
+                <MDBNavbarBrand className='navTextCol' href='#'>Logo Here</MDBNavbarBrand>
+                <MDBNavbarToggler
+                    type='button'
+                    data-target='#navbarText'
+                    aria-controls='navbarText'
+                    aria-expanded='false'
+                    aria-label='Toggle navigation'
+                    onClick={() => setShowNavText(!showNavText)}
+                >
+                    <MDBIcon icon='bars' fas />
+                </MDBNavbarToggler>
+                <MDBCollapse navbar show={showNavText}>
+                    <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' active aria-current='page' href='#'>
+                                Login
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' href='#'>
+                                Sign Up
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                    </MDBNavbarNav>
+                </MDBCollapse>
+            </MDBContainer>
+        </MDBNavbar>
+    );
+}
