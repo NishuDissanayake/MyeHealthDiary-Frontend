@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from './../../../Assets/My eHealth Diary.png';
 import './navbar.css';
 import {
     MDBNavbar,
@@ -18,7 +19,7 @@ export default function Navbar() {
     return (
         <MDBNavbar expand='lg' className='navbarCol'>
             <MDBContainer>
-                <MDBNavbarBrand className='navTextCol' href='#'>Logo Here</MDBNavbarBrand>
+                <MDBNavbarBrand className='navTextCol' href='#'><img src={logo} className='logoImg'/></MDBNavbarBrand>
                 <MDBNavbarToggler
                     type='button'
                     data-target='#navbarText'
