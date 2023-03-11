@@ -1,0 +1,59 @@
+.signImage {
+    max-width: 40px;
+    margin-right: 20px;
+}
+
+.signForm {
+    margin: 0 auto;
+    width: auto;
+    max-width: 800px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    color: black;
+}
+
+.center {
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainColSign {
+    max-width: 700px !important;
+    padding-left: 30px;
+}
+
+.inputSign {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.signLText {
+    margin-bottom: 5px;
+}
+
+.btnSign {
+    max-width: 300px;
+    margin-bottom: 20px;
+    background-color: #313357 !important;
+}
+
+.loginBText {
+    color: #313357;
+    text-decoration: underline;
+}
+
+.signImageStyle {
+    max-width: 350px;
+}
+
+.signText {
+    text-align: center;
+    font-size: 40px;
+    color: #313357;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
