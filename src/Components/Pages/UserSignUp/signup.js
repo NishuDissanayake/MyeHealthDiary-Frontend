@@ -45,12 +45,12 @@ export default function signup() {
                             <MDBInput className='inputField' id='bday' type='date' />
                         </MDBCol>
                         <MDBCol className='inputSign'>
-                            <label className='signLText'>Gender</label>
-                            <select name="cars" id="cars">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
+                            <label className='signLText'>Gender</label><br />
+                            <select name="cars" id="cars" className='signGenDrop'>
+                                <option value="volvo">Gender</option>
+                                <option value="saab">Male</option>
+                                <option value="mercedes">Female</option>
+                                <option value="audi">Rather Not Say</option>
                             </select>
                         </MDBCol>
                     </MDBRow>
@@ -66,7 +66,7 @@ export default function signup() {
                     </MDBRow>
                     <MDBRow>
                         <MDBCol className='inputSign'>
-                            <label className='signLText'>Emergency COntact Person Name</label>
+                            <label className='signLText'>Emergency Contact Person Name</label>
                             <MDBInput className='inputField' id='ename' type='text' />
                         </MDBCol>
                         <MDBCol className='inputSign'>
@@ -77,7 +77,17 @@ export default function signup() {
                     <MDBRow>
                         <MDBCol className='inputSign'>
                             <label className='signLText'>Blood Group</label>
-                            <MDBInput className='inputField' id='email' type='text' />
+                            <select name="cars" id="cars" className='signGenDrop'>
+                                <option value="volvo">Blood Group</option>
+                                <option value="saab">A+</option>
+                                <option value="mercedes">A-</option>
+                                <option value="saab">B+</option>
+                                <option value="mercedes">B-</option>
+                                <option value="saab">AB+</option>
+                                <option value="mercedes">AB-</option>
+                                <option value="saab">O+</option>
+                                <option value="mercedes">O-</option>
+                            </select>
                         </MDBCol>
                         <MDBCol className='inputSign'>
                             <label className='signLText'>Long Term/ Chronic Diseases</label>
@@ -105,7 +115,9 @@ export default function signup() {
                         </MDBCol>
                     </MDBRow>
                     <MDBRow>
+                        <div className='signBtnCen'>
                         <MDBBtn type='submit' className='mb-4 btnSign' block>Sign Up</MDBBtn>
+                        </div>
                     </MDBRow>
                     <MDBRow>
                         <div className='text-center'>

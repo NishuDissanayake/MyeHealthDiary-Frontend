@@ -10,6 +10,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
     padding-top: 50px;
+    padding-bottom: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     color: black;
 }
@@ -36,9 +37,10 @@
 }
 
 .btnSign {
-    max-width: 300px;
+    max-width: 300px !important;
     margin-bottom: 20px;
     background-color: #313357 !important;
+    margin-top: 50px;
 }
 
 .loginBText {
@@ -56,4 +58,23 @@
     color: #313357;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.signGenDrop {
+    background-color: white;
+    min-width: 300px;
+    min-height: 35px;
+    padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(78, 77, 77);
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.signBtnCen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

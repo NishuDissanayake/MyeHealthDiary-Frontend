@@ -1,0 +1,87 @@
+.welcomeMainCont {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
+
+.welcomeHeaderImg {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
+
+.welcomeImg {
+    width: 114%;
+}
+
+.welcomeH2 {
+    position: absolute;
+    top: 140px;
+    padding-left: 100px;
+    max-width: 600px;
+    color: white;
+    text-align: justify;
+}
+
+.welcomeT1 {
+    font-size: 6vh;
+    padding-bottom: 30px;
+    text-align: left;
+}
+
+.welcomeT2 {
+    font-size: 15px;
+}
+
+.welcomeCont2 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.welcomeMRow {
+    padding-left: 30%;
+}
+
+.welcomeNo1 {
+    color: white;
+    text-align: center;
+    font-size: 65px;
+    font-weight: bold;
+    background-color: #84A7BA;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+}
+
+.welcomeMRow2 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 15% !important;
+    border: 5px solid #84A7BA;
+    border-radius: 5px;
+    padding: 50px;
+}
+
+.welcomeT3 {
+    font-size: 40px;
+    color: #313357;
+    padding-left: 50px;
+}
+
+.welcomeT4 {
+    font-size: 15px;
+    color: black;
+    padding-left: 50px;
+    text-align: justify;
+}
+
+.homeImg2Style {
+    max-width: 500px;
+}
+
+.welcomeNo1:hover {
+    background-color: #313357;
+}
