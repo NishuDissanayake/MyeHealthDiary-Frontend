@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .footerAlign {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }

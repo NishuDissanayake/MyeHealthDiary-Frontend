@@ -12,6 +12,7 @@ import {
     MDBNavbarToggler,
     MDBCollapse
 } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const [showNavText, setShowNavText] = useState(false);
@@ -19,7 +20,7 @@ export default function Navbar() {
     return (
         <MDBNavbar expand='lg' className='navbarCol'>
             <MDBContainer>
-                <MDBNavbarBrand className='navTextCol' href='#'><img src={logo} className='logoImg'/></MDBNavbarBrand>
+                <MDBNavbarBrand className='navTextCol' tag={Link} to='/' ><img src={logo} className='logoImg' /></MDBNavbarBrand>
                 <MDBNavbarToggler
                     type='button'
                     data-target='#navbarText'
@@ -33,12 +34,12 @@ export default function Navbar() {
                 <MDBCollapse navbar show={showNavText}>
                     <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' active aria-current='page' href='#'>
+                            <MDBNavbarLink className='navTextCol' active aria-current='page' tag={Link} to='/login'>
                                 Login
                             </MDBNavbarLink>
                         </MDBNavbarItem>
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' href='#'>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/register'>
                                 Sign Up
                             </MDBNavbarLink>
                         </MDBNavbarItem>

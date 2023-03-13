@@ -1,1 +1,54 @@
+.loginForm {
+    margin: 0 auto;
+    width: auto;
+    max-width: 800px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    color: black;
+}
 
+.center {
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainColLogin {
+    max-width: 320px !important;
+}
+
+.inputLogin {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.loginLText {
+    margin-bottom: 5px;
+    margin-left: -10px !important;
+}
+
+.btnLogin {
+    max-width: 300px;
+    margin-bottom: 20px;
+    background-color: #313357 !important;
+}
+
+.signupBText {
+    color: #313357;
+    text-decoration: underline;
+}
+
+.loginImageStyle {
+    max-width: 350px;
+}
+
+.loginText {
+    text-align: center;
+    font-size: 40px;
+    color: #313357;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
