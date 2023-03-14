@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from './Components/Common/NavBar/navbar';
 import Login from './Components/Pages/Login/login';
 import Signup from './Components/Pages/UserSignUp/signup';
+import Home from './Components/Pages/UserHome/userhome';
 import Footer from './Components/Common/Footer/footer';
 import Welcome from './Components/Pages/WelcomeScreen/welcome';
 import Profile from './Components/Pages/UserProfile/userprofile';
@@ -22,7 +23,9 @@ function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/doctors" element={<Doctor />} />
         <Route path="/records" element={<Records />} />
         <Route path="/hospitalization-record" element={<Hospitalization />} />

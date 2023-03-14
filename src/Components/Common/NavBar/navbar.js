@@ -34,13 +34,28 @@ export default function Navbar() {
                 <MDBCollapse navbar show={showNavText}>
                     <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' active aria-current='page' tag={Link} to='/login'>
-                                Login
+                            <MDBNavbarLink className='navTextCol' active aria-current='page' tag={Link} to='/home'>
+                                Home
                             </MDBNavbarLink>
                         </MDBNavbarItem>
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' tag={Link} to='/register'>
-                                Sign Up
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/calendar'>
+                                Calendar
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/records'>
+                                Records
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/doctors'>
+                                Doctors
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/profile'>
+                                Profile
                             </MDBNavbarLink>
                         </MDBNavbarItem>
                     </MDBNavbarNav>
