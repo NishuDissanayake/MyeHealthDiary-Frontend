@@ -1,0 +1,55 @@
+.uhomeCont1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.uHomeT1 {
+    color: #313357;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.uHomeT2 {
+    color: black;
+}
+
+.uhomeCont2 {
+    padding: 50px !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: 1 px solid #F5F5F5;
+    margin-bottom: 100px;
+}
+
+.uHomeT3 {
+    color: #313357;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 80px;
+}
+
+.uHomeT4 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.uhomeCont2R {
+    margin-bottom: 30px;
+}
+
+.uHomeImgCls {
+    max-width: 300px;
+}
+
+.uHomeBtn {
+    margin-top: 50px;
+    max-width: 200px !important;
+    background-color: #313357 !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.uHomeBtnR {
+    margin-top: 50px !important;
+    justify-content: right;
+}
