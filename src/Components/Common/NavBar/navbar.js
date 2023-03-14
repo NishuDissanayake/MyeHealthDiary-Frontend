@@ -63,6 +63,16 @@ export default function Navbar() {
                                 Log Out
                             </MDBNavbarLink>
                         </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/vaccinations'>
+                                Vaccines
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/mood-chart'>
+                                Mood Chart
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBContainer>
