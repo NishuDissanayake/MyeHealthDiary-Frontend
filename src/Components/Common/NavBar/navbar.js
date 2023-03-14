@@ -58,6 +58,11 @@ export default function Navbar() {
                                 Profile
                             </MDBNavbarLink>
                         </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/#'>
+                                Log Out
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBContainer>

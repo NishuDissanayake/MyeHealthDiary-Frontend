@@ -1,0 +1,20 @@
+.recordsCont1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.recordsT1 {
+    color: #313357;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.reportBtn {
+    background-color: #055608 !important;
+}
+
+.reportTable {
+    padding-right: 200px !important;
+    margin-bottom: 100px;
+}
