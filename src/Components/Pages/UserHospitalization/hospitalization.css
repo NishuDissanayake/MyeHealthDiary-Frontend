@@ -1,0 +1,30 @@
+.hospT1 {
+    color: #313357;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 50px !important;
+    margin-bottom: 30px;
+}
+
+.hospTable1 {
+    border: 3px solid #313357;
+    padding: 10px;
+    border-radius: 10px !important;
+}
+
+.hospImgStyles {
+    max-width: 550px;
+}
+
+.hospR2 {
+    margin-bottom: 50px;
+}
+
+.hospTbl2Head {
+    background-color: #313357;
+    color: white;
+}
+
+.hospR3 {
+    margin-bottom: 30px;
+}

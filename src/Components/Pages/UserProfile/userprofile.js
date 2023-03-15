@@ -113,12 +113,12 @@ function userprofile() {
 
         <MDBRow className='uprofileR4'>
           <MDBCol className='uprofileB1'>
-            <Link to="/hospitalization-record">
+            <Link to="/vaccinations">
               <MDBBtn className='profBtn1'>Visit Vaccinations</MDBBtn>
             </Link>
           </MDBCol>
           <MDBCol className='uprofileB2'>
-            <Link to="/hospitalization-record">
+            <Link to="/mood-chart">
               <MDBBtn className='profBtn2'>Visit Mood Chart</MDBBtn>
             </Link>
           </MDBCol>
