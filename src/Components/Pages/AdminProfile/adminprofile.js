@@ -3,9 +3,18 @@ import './adminprofile.css';
 import React from 'react';
 
 function adminprofile() {
-  return (
-    <div>adminprofile</div>
-  )
+    return (
+        <MDBContainer>
+
+            <MDBContainer>
+                <MDBRow className='ad-prof-title'>Welcome Back, Admin Name</MDBRow>
+
+                
+
+            </MDBContainer>
+
+        </MDBContainer>
+    )
 }
 
 export default adminprofile

@@ -26,7 +26,6 @@ function Admindashboard() {
     const [doctors, setDoctors] = useState([]);
     const [hospitals, setHospitals] = useState([]);
     const [users, setUsers] = useState([]);
-    const [admins, setAdmins] = useState([]);
 
     useEffect(() => {
         getDoctor();
@@ -100,7 +99,7 @@ function Admindashboard() {
                 <MDBRow className='aprofileT2' id='doctors'>
                     <MDBCol className='dash-section-col1'>Doctor Records</MDBCol>
                     <MDBCol className='dash-section-col2'>
-                        <Link to="">
+                        <Link to="/add-doctor">
                             <MDBBtn className='aprofBtn2'>Add New Doctor</MDBBtn>
                         </Link>
                     </MDBCol>
@@ -200,7 +199,7 @@ function Admindashboard() {
                                     <td>{user.email}</td>
                                     <td>{user.status}</td>
                                     <td><Link to="/mood-chart">
-                                        <MDBBtn className='aprofBtn1'>View Profile</MDBBtn>
+                                        <MDBBtn className='aprofBtn3'>View Profile</MDBBtn>
                                     </Link></td>
                                 </tr>
                             ))}

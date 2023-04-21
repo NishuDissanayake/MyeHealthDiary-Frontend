@@ -14,6 +14,7 @@ import Records from './Components/Pages/UserRecords/records';
 import Vaccines from './Components/Pages/UserVaccines/vaccines';
 import Adminprofile from './Components/Pages/AdminProfile/adminprofile';
 import Admindashboard from './Components/Pages/AdminDashboard/admindashboard';
+import AddDoctor from './Components/Pages/AdminDashboard/addDoctor';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/mood-chart" element={<MoodChart />} />
         <Route path="/admin-profile" element={<Adminprofile />} />
         <Route path="/admin-dashboard" element={<Admindashboard />} />
+        <Route path="/add-doctor" element={<AddDoctor />} />
         <Route path="/vaccinations" element={<Vaccines />} />
       </Routes>
       <Footer />
