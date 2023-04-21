@@ -1,0 +1,72 @@
+.aprofileT1 {
+    margin-top: -65px !important;
+    color: #313357;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 75px;
+}
+
+.aprofileT2 {
+    color: #313357;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.aprofileTbl1 {
+    margin-bottom: 50px;
+}
+
+.aprofileR1 {
+    margin-top: 50px !important;
+    margin-bottom: 50px;
+}
+
+.aprofBtn1 {
+    float: left;
+    background-color: #313357 !important;
+    min-width: 150px !important;
+}
+
+.admin-dash-img {
+    max-height: 400px;
+}
+
+.aprofBtn2 {
+    float: right;
+    background-color: #055608 !important;
+    min-width: 250px !important;
+}
+
+.aprofileT2 {
+    margin-top: 125px !important;
+}
+
+/*
+.allImgStyle {
+    max-width: 300px;
+}
+
+.profBtn {
+    background-color: #055608 !important;
+}
+
+.profBtnL {
+    background-color: #055608 !important;
+    box-shadow: none !important;
+    margin-right: 10px;
+}
+
+.profAllergyBtns {
+    float: right;
+}
+
+
+
+.profBtn2 {
+    background-color: #055608 !important;
+}
+
+
+
+*/
