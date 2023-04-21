@@ -123,7 +123,7 @@ function Admindashboard() {
                             {doctors.map((doctor) => (
                                 <tr key={doctor.doctor_id}>
                                     <td>{doctor.doctor_id}</td>
-                                    <td>{doctor.name}</td>
+                                    <td>{doctor.doctor_name}</td>
                                     <td>{doctor.hospital}</td>
                                     <td>{doctor.specialization}</td>
                                     <td>{doctor.qualifications}</td>
@@ -154,6 +154,7 @@ function Admindashboard() {
                                 <th scope='col'>Address</th>
                                 <th scope='col'>Phone Number</th>
                                 <th scope='col'>Status</th>
+                                <th scope='col'>Manage</th>
                             </tr>
                         </MDBTableHead>
                         <MDBTableBody>
@@ -164,6 +165,9 @@ function Admindashboard() {
                                     <td>{hospital.address}</td>
                                     <td>{hospital.phone_number}</td>
                                     <td>{hospital.status}</td>
+                                    <td><Link to="/mood-chart">
+                                        <MDBBtn className='aprofBtn3'>Manage Hospital</MDBBtn>
+                                    </Link></td>
                                 </tr>
                             ))}
                         </MDBTableBody>

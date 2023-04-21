@@ -15,6 +15,8 @@ import Vaccines from './Components/Pages/UserVaccines/vaccines';
 import Adminprofile from './Components/Pages/AdminProfile/adminprofile';
 import Admindashboard from './Components/Pages/AdminDashboard/admindashboard';
 import AddDoctor from './Components/Pages/AdminDashboard/addDoctor';
+import ManageHospital from './Components/Pages/AdminDashboard/manageHospital';
+import AddHospital from './Components/Pages/AdminDashboard/addHospital';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         <Route path="/admin-dashboard" element={<Admindashboard />} />
         <Route path="/add-doctor" element={<AddDoctor />} />
         <Route path="/vaccinations" element={<Vaccines />} />
+        <Route path="/manage-hospital" element={<ManageHospital />} />
+        <Route path="/add-hospital" element={<AddHospital />} />
       </Routes>
       <Footer />
       </div>
