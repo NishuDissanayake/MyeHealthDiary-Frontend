@@ -49,7 +49,7 @@ function hospitalization() {
 
       </MDBContainer>
 
-      <MDBContainer>
+      <MDBContainer className='hospContL'>
 
         <MDBRow className='hospR3'>
           <MDBTable striped>
@@ -163,21 +163,6 @@ function hospitalization() {
               </tr>
               <tr>
                 <td>2023 - 01 - 05, 37.5 C</td>
-              </tr>
-            </MDBTableBody>
-          </MDBTable>
-        </MDBRow>
-
-        <MDBRow className='hospR3'>
-          <MDBTable striped>
-            <MDBTableHead className='hospTbl2Head'>
-              <tr>
-                <th scope='col'>Allergies</th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              <tr>
-                <td colSpan='2'>Peanuts</td>
               </tr>
             </MDBTableBody>
           </MDBTable>
