@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './userprofile.css';
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import AllImg from './../../../Assets/Allergy Img.jpg';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-function userprofile() {
+
+function Userprofile() {
+
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  const getUserData = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=${nic}`);
+      const dataArray = response.data; 
+      // console.log(dataArray);
+      // console.log(dataArray[0].first_name);
+      setUserData(dataArray);
+      //console.log(userData);
+      // console.log(userData[0].first_name);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving user data failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+  function calcAge(bday) {
+    const tdate = new Date();
+    const age = tdate - bday;
+
+    return age;
+  }
+
   return (
     <MDBContainer>
 
@@ -20,20 +58,28 @@ function userprofile() {
             </MDBTableHead>
             <MDBTableBody>
               <tr>
-                <th scope='row'>Name</th>
-                <td colSpan='2'>John Doe</td>
+                <th scope='row'>First Name</th>
+                <td colSpan='2'>{userData && userData.length ? userData[0].first_name : '-'}</td>
+              </tr>
+              <tr>
+                <th scope='row'>Last Name</th>
+                <td colSpan='2'>{userData && userData.length ? userData[0].last_name : '-'}</td>
               </tr>
               <tr>
                 <th scope='row'>Age</th>
-                <td colSpan='2'>29 years 3 months 1 day</td>
+                <td colSpan='2'>{userData && userData.length ? calcAge(userData[0].birth_day) : '-'}</td>
               </tr>
               <tr>
-                <th scope='row'>Gender</th>
-                <td colSpan='2'>Male</td>
+                <th scope='row'>Address</th>
+                <td colSpan='2'>{userData && userData.length ? userData[0].address : '-'}</td>
+              </tr>
+              <tr>
+                <th scope='row'>Phone Number</th>
+                <td colSpan='2'>{userData && userData.length ? userData[0].phone_number : '-'}</td>
               </tr>
               <tr>
                 <th scope='row'>Emergency Contact Person</th>
-                <td>Maxim Baker</td>
+                <td colSpan='2'>{userData && userData.length ? userData[0].emergency_contact_person : '-'}</td>
                 <td>
                   <Link to="/hospitalization-record">
                     <MDBBtn className='profBtn'>Update</MDBBtn>
@@ -41,7 +87,7 @@ function userprofile() {
               </tr>
               <tr>
                 <th scope='row'>Emergency Contact Number</th>
-                <td>0787878786</td>
+                <td colSpan='2'>{userData && userData.length ? userData[0].emergency_contact : '-'}</td>
                 <td>
                   <Link to="/hospitalization-record">
                     <MDBBtn className='profBtn'>Update</MDBBtn>
@@ -49,7 +95,7 @@ function userprofile() {
               </tr>
               <tr>
                 <th scope='row'>Blood Group</th>
-                <td>A+</td>
+                <td colSpan='2'>{userData && userData.length ? userData[0].blood_group : '-'}</td>
                 <td>
                   <Link to="/hospitalization-record">
                     <MDBBtn className='profBtn'>Update</MDBBtn>
@@ -57,7 +103,7 @@ function userprofile() {
               </tr>
               <tr>
                 <th scope='row'>Chronic/ Long Term Diseases</th>
-                <td>Acute Leukaemia</td>
+                <td colSpan='2'>{userData && userData.length ? userData[0].chronic_disease : '-'}</td>
                 <td>
                   <Link to="/hospitalization-record">
                     <MDBBtn className='profBtn'>Update</MDBBtn>
@@ -65,7 +111,8 @@ function userprofile() {
               </tr>
               <tr>
                 <th scope='row'>Health Insurance Provider</th>
-                <td>Life Care Health Insurance</td>
+                <td colSpan='2'>{userData && userData.length ? userData[0].health_insurance_provider
+ : '-'}</td>
                 <td>
                   <Link to="/hospitalization-record">
                     <MDBBtn className='profBtn'>Update</MDBBtn>
@@ -130,4 +177,4 @@ function userprofile() {
   )
 }
 
-export default userprofile
+export default Userprofile
