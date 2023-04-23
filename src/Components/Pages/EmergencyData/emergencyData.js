@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './userprofile.css';
+import './emergencyData.css';
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import AllImg from './../../../Assets/Allergy Img.jpg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-
-function Userprofile() {
+function EmergencyData() {
 
   const [userData, setUserData] = useState([]);
   const [allergydata, setAllergyData] = useState([]);
@@ -66,17 +65,14 @@ function Userprofile() {
     <MDBContainer>
 
       <MDBContainer className='uprofileCont2'>
-        <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+        <MDBRow className='uprofileT1'>Emergency Medical Data Profile!!!</MDBRow>
 
         <MDBRow className='uprofileTbl1'>
           <MDBTable striped>
             <MDBTableHead dark>
               <tr>
-                <th scope='col'>Emergency Medical Information</th>
-                <th><Link to="/hospitalization-record">
-                  <MDBBtn className='profBtnL'>Update Data</MDBBtn>
-                </Link>
-                </th>
+                <th scope='col' colspan='2'>Emergency Medical Information</th>
+                <th></th>
               </tr>
             </MDBTableHead>
             <MDBTableBody>
@@ -135,10 +131,6 @@ function Userprofile() {
                 <tr>
                   <th scope='col'>Allergy Type</th>
                   <th scope='col'>Allergy Element</th>
-                  <th className='profAllergyBtns'>
-                    <Link to="/hospitalization-record">
-                      <MDBBtn className='profBtnL'>Add New</MDBBtn>
-                    </Link></th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
@@ -156,23 +148,10 @@ function Userprofile() {
           </MDBCol>
         </MDBRow>
 
-        <MDBRow className='uprofileR4'>
-          <MDBCol className='uprofileB1'>
-            <Link to="/vaccinations">
-              <MDBBtn className='profBtn1'>Visit Vaccinations</MDBBtn>
-            </Link>
-          </MDBCol>
-          <MDBCol className='uprofileB2'>
-            <Link to="/mood-chart">
-              <MDBBtn className='profBtn2'>Visit Mood Chart</MDBBtn>
-            </Link>
-          </MDBCol>
-        </MDBRow>
-
       </MDBContainer>
 
     </MDBContainer>
   )
 }
 
-export default Userprofile
+export default EmergencyData
