@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './records.css';
-import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBRow, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
-function records() {
+function Records() {
+
+  const [records, setRecords] = useState([]);
+
+  useEffect(() => {
+    getRecords();
+  }, []);
+
+  const getRecords = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-user-data?nic=${nic}`);
+      const reportsArray = response.data.medical_reports;
+      console.log(reportsArray);
+      setRecords(reportsArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving medical records failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
   return (
     <MDBContainer breakpoint='sm md lg xl xxl main-cont'>
       <MDBContainer className='recordsCont1'>
@@ -22,27 +49,17 @@ function records() {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            <tr>
-              <th scope='row'>03 - 02 - 2023</th>
-              <td>Hospitalization</td>
-              <td>Acute Leukamia</td>
-              <td>
-                <Link to="/hospitalization-record">
-                <MDBBtn className='reportBtn'>View Full Report</MDBBtn>
-                </Link></td>
-            </tr>
-            <tr>
-              <th scope='row'>03 - 02 - 2023</th>
-              <td>Clinic</td>
-              <td>Acute Leukamia</td>
-              <td><MDBBtn className='reportBtn'>View Full Report</MDBBtn></td>
-            </tr>
-            <tr>
-              <th scope='row'>03 - 02 - 2023</th>
-              <td>OPD</td>
-              <td>Common Cold</td>
-              <td><MDBBtn className='reportBtn'>View Full Report</MDBBtn></td>
-            </tr>
+            {/* {records.map((record) => (
+              <tr key={record._id}>
+                <td>{record.date}</td>
+                <td>{record.type}</td>
+                <td>{record.primary_diagnosis}</td>
+                <td>
+                  <Link to="/hospitalization-record">
+                    <MDBBtn className='reportBtn'>View Full Report</MDBBtn>
+                  </Link></td>
+              </tr>
+            ))} */}
           </MDBTableBody>
         </MDBTable>
       </MDBContainer>
@@ -51,4 +68,4 @@ function records() {
   )
 }
 
-export default records
+export default Records

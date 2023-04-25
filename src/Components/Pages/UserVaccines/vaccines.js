@@ -1,9 +1,37 @@
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableBody, MDBTableHead } from 'mdb-react-ui-kit';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './vaccines.css';
 import VaccineImg from './../../../Assets/syringe.png';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-function vaccines() {
+function Vaccines() {
+
+  const [vaccines, setVaccines] = useState([]);
+
+  useEffect(() => {
+    getVaccines();
+  }, []);
+
+  const getVaccines = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-vaccines?nic=${nic}`);
+      const vaccineArray = response.data.vaccinations;
+      console.log(vaccineArray);
+      setVaccines(vaccineArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving vaccinations failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
   return (
     <MDBContainer className='vaccineCont1'>
       <MDBContainer className='vaccineCont2'>
@@ -28,41 +56,15 @@ function vaccines() {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              <tr>
-                <th scope='row'>BCG</th>
-                <td>03 - -1 - 2023</td>
-                <td>1</td>
-                <td>BC335345</td>
-                <td>General Hospital, Ragama</td>
-              </tr>
-              <tr>
-                <th scope='row'>BCG</th>
-                <td>03 - -1 - 2023</td>
-                <td>1</td>
-                <td>BC335345</td>
-                <td>General Hospital, Ragama</td>
-              </tr>
-              <tr>
-                <th scope='row'>BCG</th>
-                <td>03 - -1 - 2023</td>
-                <td>1</td>
-                <td>BC335345</td>
-                <td>General Hospital, Ragama</td>
-              </tr>
-              <tr>
-                <th scope='row'>BCG</th>
-                <td>03 - -1 - 2023</td>
-                <td>1</td>
-                <td>BC335345</td>
-                <td>General Hospital, Ragama</td>
-              </tr>
-              <tr>
-                <th scope='row'>BCG</th>
-                <td>03 - -1 - 2023</td>
-                <td>1</td>
-                <td>BC335345</td>
-                <td>General Hospital, Ragama</td>
-              </tr>
+              {vaccines.map((vaccine) => (
+                <tr key={vaccine._id}>
+                  <td>{vaccine.vaccine_name}</td>
+                  <td>{vaccine.date}</td>
+                  <td>{vaccine.dosage}</td>
+                  <td>{vaccine.batch_number}</td>
+                  <td>{vaccine.location}</td>
+                </tr>
+              ))}
             </MDBTableBody>
           </MDBTable>
         </MDBCol>
@@ -71,4 +73,4 @@ function vaccines() {
   )
 }
 
-export default vaccines
+export default Vaccines
