@@ -65,7 +65,7 @@ function EmergencyData() {
     <MDBContainer>
 
       <MDBContainer className='uprofileCont2'>
-        <MDBRow className='uprofileT1'>Emergency Medical Data Profile!!!</MDBRow>
+        <MDBRow className='uprofileT1e'>Emergency Medical Data Profile!!!</MDBRow>
 
         <MDBRow className='uprofileTbl1'>
           <MDBTable striped>

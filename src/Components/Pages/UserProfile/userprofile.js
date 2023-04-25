@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './userprofile.css';
-import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import AllImg from './../../../Assets/Allergy Img.jpg';
 import axios from 'axios';
@@ -73,7 +73,7 @@ function Userprofile() {
             <MDBTableHead dark>
               <tr>
                 <th scope='col'>Emergency Medical Information</th>
-                <th><Link to="/hospitalization-record">
+                <th><Link to="/manage-profile">
                   <MDBBtn className='profBtnL'>Update Data</MDBBtn>
                 </Link>
                 </th>
@@ -136,9 +136,9 @@ function Userprofile() {
                   <th scope='col'>Allergy Type</th>
                   <th scope='col'>Allergy Element</th>
                   <th className='profAllergyBtns'>
-                    <Link to="/hospitalization-record">
-                      <MDBBtn className='profBtnL'>Add New</MDBBtn>
-                    </Link></th>
+                  <Link to="/manage-profile#allergySection">
+                  <MDBBtn className='profBtnL'>Update Data</MDBBtn>
+                </Link></th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
