@@ -9,16 +9,20 @@ import Swal from 'sweetalert2';
 function EmergencyData() {
 
   const [userData, setUserData] = useState([]);
+  const [nic, setNIC] = useState("");
   const [allergydata, setAllergyData] = useState([]);
 
-  useEffect(() => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    console.log(nic);
     getUserData();
-  }, []);
+    getAllergyData();
+  };
+
 
   const getUserData = async () => {
-    const nic = '200055702644';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=${nic}`);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=` + nic);
       const dataArray = response.data;
       setUserData(dataArray);
     } catch (error) {
@@ -39,14 +43,10 @@ function EmergencyData() {
     return age;
   }
 
-  useEffect(() => {
-    getAllergyData();
-  }, []);
 
   const getAllergyData = async () => {
-    const nic = '200055702644';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-allergies?nic=${nic}`);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-allergies?nic=` + nic);
       const allergyArray = response.data.allergies;
       setAllergyData(allergyArray);
     } catch (error) {
@@ -66,6 +66,16 @@ function EmergencyData() {
 
       <MDBContainer className='uprofileCont2'>
         <MDBRow className='uprofileT1e'>Emergency Medical Data Profile!!!</MDBRow>
+
+        <MDBRow className='manageProfileR2'>
+          <MDBCol className='manageProfileC'>
+            <form onSubmit={handleClick}>
+              <label className='mprofileText' htmlFor="n_hospital">Insert NIC</label> <br />
+              <input className='mprofileInput' id="nic" type="text" value={nic} onChange={(event) => setNIC(event.target.value)} required></input>
+              <MDBBtn type='submit' className='mb-4 mprofileBtn emBtn' block>Find User</MDBBtn>
+            </form>
+          </MDBCol>
+        </MDBRow>
 
         <MDBRow className='uprofileTbl1'>
           <MDBTable striped>

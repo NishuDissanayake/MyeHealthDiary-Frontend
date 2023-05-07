@@ -47,8 +47,7 @@ function EmtProfile() {
     try {
       const _id = '64257fba06dca3cc2d5a2d54';
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-emt-hospital", { _id, n_hospital });
-      
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-emt-hospital?_id=" + _id + "&n_hospital=" + n_hospital);
 
       setHospital("");
       console.log(n_hospital);
@@ -81,7 +80,7 @@ function EmtProfile() {
     try {
       const _id = '64257fba06dca3cc2d5a2d54';
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-emt-phone", { _id, n_phone });
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-emt-phone?_id=" + _id + "&n_phone=" + n_phone);
       console.log(res.data);
 
       setPhone("");
@@ -114,9 +113,9 @@ function EmtProfile() {
     try {
       const _id = '64257fba06dca3cc2d5a2d54';
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-emt-designation", { _id, n_designation });
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-emt-designation?_id=" + _id + "&n_designation=" + n_designation);
       console.log(res.data);
-    
+
       setDesignation("");
 
       Swal.fire({
@@ -139,25 +138,25 @@ function EmtProfile() {
 
   useEffect(() => {
     deleteUser();
-}, [])
+  }, [])
 
-const deleteUser = async (event) => {
+  const deleteUser = async (event) => {
     event.preventDefault();
-  
+
     try {
       const _id = '64257fba06dca3cc2d5a2d54';
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-emt-account", { _id, n_pass });
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-emt-account?_id=" + _id + "&n_pass=" + n_pass);
       console.log(res.data);
-  
+
       setPass("");
-  
+
       Swal.fire({
         title: 'Success!',
         text: 'Account deactivation successful!',
         icon: 'success',
         confirmButtonText: 'OK'
       });
-  
+
     } catch (error) {
       console.log(error);
       Swal.fire({
@@ -179,7 +178,10 @@ const deleteUser = async (event) => {
             <MDBTableHead dark>
               <tr>
                 <th scope='col'>Emergency Medical Team Member Information</th>
-                <th></th>
+                <th><Link to="/emergency">
+                  <MDBBtn className='profBtnL'>Find User</MDBBtn>
+                </Link>
+                </th>
               </tr>
             </MDBTableHead>
             <MDBTableBody>
