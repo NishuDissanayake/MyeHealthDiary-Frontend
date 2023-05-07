@@ -37,7 +37,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/doctors" element={<Doctor />} />
         <Route path="/records" element={<Records />} />
-        <Route path="/hospitalization-record" element={<Hospitalization />} />
+        <Route path="/hospitalization-record/:id" element={<Hospitalization />} />
         <Route path="/mood-chart" element={<MoodChart />} />
         <Route path="/admin-profile" element={<Adminprofile />} />
         <Route path="/admin-dashboard" element={<Admindashboard />} />
