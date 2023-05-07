@@ -21,6 +21,11 @@ import EmergencyData from './Components/Pages/EmergencyData/emergencyData';
 import ProfileUpdate from './Components/Pages/UserProfile/profileUpdate';
 import EmtProfile from './Components/Pages/EMTProfile/emtProfile';
 import AddEmt from './Components/Pages/AdminDashboard/addEmt';
+import AddVaccine from './Components/Pages/DoctorProfile/addVaccine';
+import DoctorProfile from './Components/Pages/DoctorProfile/doctorProfile';
+import DoctorCurMeds from './Components/Pages/DoctorProfile/doctorCurrentMeds';
+import DoctorFindRecord from './Components/Pages/DoctorProfile/doctorFindRecord';
+import DoctorUpdateRecord from './Components/Pages/DoctorProfile/doctorUpdateRecord';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -49,6 +54,11 @@ function App() {
         <Route path="/add-emt" element={<AddEmt />} />
         <Route path="/manage-profile" element={<ProfileUpdate />} />
         <Route path="/emt-profile" element={<EmtProfile />} />
+        <Route path="/add-vaccine" element={<AddVaccine />} />
+        <Route path="/add-current-meds" element={<DoctorCurMeds />} />
+        <Route path="/doctor-profile" element={<DoctorProfile />} />
+        <Route path="/find-user-record" element={<DoctorFindRecord />} />
+        <Route path="/update-user-record" element={<DoctorUpdateRecord />} />
       </Routes>
       <Footer />
       </div>
