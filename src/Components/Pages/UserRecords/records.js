@@ -17,9 +17,8 @@ function Records() {
   const getRecords = async () => {
     const nic = '200055702644';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-user-data?nic=${nic}`);
-      const reportsArray = response.data.medical_reports;
-      console.log(reportsArray);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-user-data?nic=` +  + nic);
+      const reportsArray = response.data[0].medical_reports;
       setRecords(reportsArray);
     } catch (error) {
       console.log(error);
@@ -49,17 +48,17 @@ function Records() {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            {/* {records.map((record) => (
+            {records.map((record) => (
               <tr key={record._id}>
                 <td>{record.date}</td>
                 <td>{record.type}</td>
                 <td>{record.primary_diagnosis}</td>
                 <td>
-                  <Link to="/hospitalization-record">
+                  <Link to={`/hospitalization-record/${record._id}`}>
                     <MDBBtn className='reportBtn'>View Full Report</MDBBtn>
                   </Link></td>
               </tr>
-            ))} */}
+            ))}
           </MDBTableBody>
         </MDBTable>
       </MDBContainer>
