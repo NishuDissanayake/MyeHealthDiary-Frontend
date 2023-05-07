@@ -18,6 +18,9 @@ function ProfileUpdate() {
     const [n_blood_group, setBGroup] = useState('');
     const [n_chronic_disease, setCDisease] = useState('');
     const [n_health_insurance_provider, setInsurance] = useState('');
+    const [n_pass, setPass] = useState('');
+    const [n_AType, setAType] = useState('');
+    const [n_AName, setAName] = useState('');
 
     useEffect(() => {
         updateAddress();
@@ -29,10 +32,8 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-address", { nic, n_address });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-address?nic=" + nic + "&n_address=" + n_address);
             console.log(res.data);
-
-            setAddress("");
 
             Swal.fire({
                 title: 'Success!',
@@ -62,10 +63,8 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-contact", { nic, n_phone });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-contact?nic=" + nic + "&n_phone=" + n_phone);
             console.log(res.data);
-
-            setPhone("");
 
             Swal.fire({
                 title: 'Success!',
@@ -95,7 +94,7 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-em-contact-name", { nic, n_emergency_contact_person });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-em-contact-name?nic=" + nic + "&n_emergency_contact_person=" + n_emergency_contact_person);
             console.log(res.data);
 
             setEmPerson("");
@@ -128,7 +127,7 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-em-contact", { nic, n_emergency_contact });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-em-contact?nic=" + nic + "&n_emergency_contact=" + n_emergency_contact);
             console.log(res.data);
 
             setEmPhone("");
@@ -161,7 +160,7 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-blood-group", { nic, n_blood_group });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-blood-group?nic=" + nic + "&n_blood_group=" + n_blood_group);
             console.log(res.data);
 
             setBGroup("");
@@ -194,7 +193,7 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-chronic-diseases", { nic, n_chronic_disease });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-chronic-diseases?nic=" + nic + "&n_chronic_disease=" + n_chronic_disease);
             console.log(res.data);
 
             setCDisease("");
@@ -227,7 +226,7 @@ function ProfileUpdate() {
         try {
             const nic = '200055702644';
 
-            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-health-insurance", { nic, n_health_insurance_provider });
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-health-insurance?nic=" + nic + "&n_health_insurance_provider=" + n_health_insurance_provider);
             console.log(res.data);
 
             setInsurance("");
@@ -250,74 +249,71 @@ function ProfileUpdate() {
         }
     };
 
-    // const [n_passwrd, setDelete] = useState([]);
-    // const [dataArray, setDataArray] = useState([]);
+    useEffect(() => {
+        addAllergy();
+    }, [])
 
-    // useEffect(() => {
-    //     getUser();
-    // }, []);
+    const addAllergy = async (event) => {
+        event.preventDefault();
 
-    // const getUser = async () => {
-    //     const nic = '200055702644';
-    //     try {
-    //         const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=${nic}`);
-    //         setDataArray(response.data);
-    //     } catch (error) {
-    //         console.log(error);
-    //         Swal.fire({
-    //             title: 'Error!',
-    //             text: 'Retrieving user data failed!',
-    //             icon: 'error',
-    //             confirmButtonText: 'OK'
-    //         });
-    //     }
-    // };
+        try {
+            const nic = '200055702644';
 
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/add-allergy?nic=" + nic + "&allergy_type=" + n_AType + "&allergy_name=" + n_AName);
+            console.log(res.data);
 
-    // useEffect(() => {
-    //     deleteAccount();
-    // }, [])
+            setAType("");
+            setAName("");
 
-    // const deleteAccount = async (event) => {
-    //     event.preventDefault();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Allergy added successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
 
-    //     const pass = dataArray[0].passwrd;
-    //     console.log(pass);
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Allergy addition failed!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    };
 
-    //     if (pass !== n_passwrd) {
-    //         console.log("Passwords do not match!");
-    //         Swal.fire({
-    //             title: 'Error!',
-    //             text: 'Passwords do not match!',
-    //             icon: 'error',
-    //             confirmButtonText: 'OK'
-    //         });
-    //     }
-    //     else {
-    //         try {
-    //             const nic = '200055702644';
+    useEffect(() => {
+        deleteUser();
+    }, [])
 
-    //             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-user", { nic });
-    //             console.log(res.data);
+    const deleteUser = async (event) => {
+        event.preventDefault();
 
-    //             Swal.fire({
-    //                 title: 'Success!',
-    //                 text: 'Account deactivated successfully!',
-    //                 icon: 'success',
-    //                 confirmButtonText: 'OK'
-    //             });
+        try {
+            const nic = '200055702644';
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-user?nic=" + nic + "&n_pass=" + n_pass);
+            console.log(res.data);
 
-    //         } catch (error) {
-    //             console.log(error);
-    //             Swal.fire({
-    //                 title: 'Error!',
-    //                 text: 'Account deactivation failed!',
-    //                 icon: 'error',
-    //                 confirmButtonText: 'OK'
-    //             });
-    //         }
-    //     }
-    // };
+            setPass("");
+
+            Swal.fire({
+                title: 'Success!',
+                text: 'Account deactivation successful!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Account deactivation failed! Recheck password!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    };
 
 
 
@@ -326,6 +322,25 @@ function ProfileUpdate() {
 
             <MDBContainer className='manageProfile2'>
                 <MDBRow className='uprofileT1'>Manage Your Profile!</MDBRow>
+
+                <MDBRow className='manageProfileR2'>
+                    <MDBCol className='manageProfileC'>
+                        <form onSubmit={addAllergy} className='mprofileForm'>
+                            <legend className='mprofileLegend'>Add Allergy</legend>
+                            <MDBRow>
+                            <MDBCol>
+                            <label className='mprofileText' htmlFor="address">New Allergy Type</label> <br />
+                            <input className='mprofileInput' id="allergy_type" type="text" value={n_AType} onChange={(event) => setAType(event.target.value)} required></input> <br />
+                            </MDBCol>
+                            <MDBCol>
+                            <label className='mprofileText' htmlFor="address">New Allergy Name</label> <br />
+                            <input className='mprofileInput' id="allergy_name" type="text" value={n_AName} onChange={(event) => setAName(event.target.value)} required></input> <br />
+                            </MDBCol>
+                            </MDBRow>
+                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Allergy</MDBBtn>
+                        </form>
+                    </MDBCol>
+                </MDBRow>
 
                 <MDBRow className='manageProfileR2'>
                     <MDBCol className='manageProfileC'>
@@ -398,12 +413,12 @@ function ProfileUpdate() {
                     </MDBCol>
 
                     <MDBCol className='manageProfileC'>
-                        {/* <form onSubmit={getUser} className='mprofileForm'>
+                        <form onSubmit={deleteUser} className='mprofileForm'>
                             <legend className='mprofileLegendx'>Deactivate Account</legend>
                             <label className='mprofileText'>Enter your password</label> <br />
-                            <input className='mprofileInput' id="passwrd" type="text" value={n_passwrd} onChange={(event) => setDelete(event.target.value)} required></input> <br />
+                            <input className='mprofileInput' id="n_pass" type="text" value={n_pass} onChange={(event) => setPass(event.target.value)} required></input> <br />
                             <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Deactivate Account</MDBBtn>
-                        </form> */}
+                        </form>
                     </MDBCol>
                 </MDBRow>
 

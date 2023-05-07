@@ -16,6 +16,11 @@ function Admindashboard() {
         const doctorsRow = document.getElementById('hospitals');
         doctorsRow.scrollIntoView({ behavior: 'smooth' });
     }
+    
+    const scrollToEmts = () => {
+        const doctorsRow = document.getElementById('emts');
+        doctorsRow.scrollIntoView({ behavior: 'smooth' });
+    }
 
     const scrollToUsers = () => {
         const doctorsRow = document.getElementById('users');
@@ -25,6 +30,7 @@ function Admindashboard() {
 
     const [doctors, setDoctors] = useState([]);
     const [hospitals, setHospitals] = useState([]);
+    const [emts, setEmts] = useState([]);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -51,6 +57,21 @@ function Admindashboard() {
         axios.get('https://my-ehealth-diary-backend.herokuapp.com/api/get-hospitals')
             .then(response => {
                 setHospitals(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        getEmts();
+    }, [])
+
+    const getEmts = async () => {
+
+        axios.get('https://my-ehealth-diary-backend.herokuapp.com/api/get-emts')
+            .then(response => {
+                setEmts(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -89,10 +110,10 @@ function Admindashboard() {
                         <MDBBtn className='aprofBtn1' onClick={scrollToHospitals}>Hospitals</MDBBtn>
                     </MDBCol>
                     <MDBCol col-md-3 col-sm-6 className='aprof-btn-col'>
-                        <MDBBtn className='aprofBtn1' onClick={scrollToUsers}>Users</MDBBtn>
+                        <MDBBtn className='aprofBtn1' onClick={scrollToEmts}>EMTs</MDBBtn>
                     </MDBCol>
                     <MDBCol col-md-3 col-sm-6 className='aprof-btn-col'>
-                        <MDBBtn className='aprofBtn1' onClick={scrollToDoctors}>View Profile</MDBBtn>
+                        <MDBBtn className='aprofBtn1' onClick={scrollToUsers}>Users</MDBBtn>
                     </MDBCol>
                 </MDBRow>
 
@@ -139,7 +160,7 @@ function Admindashboard() {
                 <MDBRow className='aprofileT2' id='hospitals'>
                     <MDBCol className='dash-section-col1'>Hospital Records</MDBCol>
                     <MDBCol className='dash-section-col2'>
-                        <Link to="">
+                        <Link to="/add-hospital">
                             <MDBBtn className='aprofBtn2'>Add New Hospital</MDBBtn>
                         </Link>
                     </MDBCol>
@@ -168,6 +189,44 @@ function Admindashboard() {
                                     <td><Link to="/mood-chart">
                                         <MDBBtn className='aprofBtn3'>Manage Hospital</MDBBtn>
                                     </Link></td>
+                                </tr>
+                            ))}
+                        </MDBTableBody>
+                    </MDBTable>
+                </MDBRow>
+
+                <MDBRow className='aprofileT2' id='emts'>
+                    <MDBCol className='dash-section-col1'>Emergency Medical Team Member Records</MDBCol>
+                    <MDBCol className='dash-section-col2'>
+                        <Link to="/add-emt">
+                            <MDBBtn className='aprofBtn2'>Add New EMT Member</MDBBtn>
+                        </Link>
+                    </MDBCol>
+                </MDBRow>
+
+                <MDBRow className='aprofileTbl1'>
+                    <MDBTable striped>
+                        <MDBTableHead dark>
+                            <tr>
+                                <th scope='col'>EMT ID</th>
+                                <th scope='col'>Name</th>
+                                <th scope='col'>Hospital</th>
+                                <th scope='col'>Designation</th>
+                                <th scope='col'>Phone Number</th>
+                                <th scope='col'>Email</th>
+                                <th scope='col'>Status</th>
+                            </tr>
+                        </MDBTableHead>
+                        <MDBTableBody>
+                            {emts.map((emt) => (
+                                <tr key={emt.emt_id}>
+                                    <td>{emt.emt_id}</td>
+                                    <td>{emt.emt_name}</td>
+                                    <td>{emt.hospital}</td>
+                                    <td>{emt.designation}</td>
+                                    <td>{emt.phone_number}</td>
+                                    <td>{emt.email}</td>
+                                    <td>{emt.status}</td>
                                 </tr>
                             ))}
                         </MDBTableBody>

@@ -136,9 +136,9 @@ function Userprofile() {
                   <th scope='col'>Allergy Type</th>
                   <th scope='col'>Allergy Element</th>
                   <th className='profAllergyBtns'>
-                  <Link to="/manage-profile#allergySection">
-                  <MDBBtn className='profBtnL'>Update Data</MDBBtn>
-                </Link></th>
+                    <Link to="/manage-profile#allergySection">
+                      <MDBBtn className='profBtnL'>Update Data</MDBBtn>
+                    </Link></th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
