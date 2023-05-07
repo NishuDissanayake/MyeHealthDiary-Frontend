@@ -4,6 +4,26 @@ import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDB
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import calImg from './../../../Assets/Calendar Img.jpg';
+import happy from './../../../Assets/happy.png';
+import calm from './../../../Assets/calm.png';
+import anxious from './../../../Assets/anxious.png';
+import irritated from './../../../Assets/irritated.png';
+import depressed from './../../../Assets/depressed.png';
+import confused from './../../../Assets/confused.png';
+import mood_swings from './../../../Assets/mood_swings.png';
+import energetic from './../../../Assets/energetic.png';
+import fine from './../../../Assets/fine.png';
+import headache from './../../../Assets/head.png';
+import insominia from './../../../Assets/insomnia.png';
+import fatigue from './../../../Assets/fatigue.png';
+import stomach from './../../../Assets/stomach.png';
+import muscle from './../../../Assets/muscle.png';
+import pain from './../../../Assets/pain.png';
+import eye from './../../../Assets/eye.png';
+import stress from './../../../Assets/stress.png';
+import travel from './../../../Assets/travel.png';
+import injury from './../../../Assets/injury.png';
+import alcohol from './../../../Assets/alcohol.png';
 
 function CalendarPage() {
   const [date, setDate] = useState(new Date());
@@ -29,57 +49,57 @@ function CalendarPage() {
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
+                      <img src={happy} alt='.....' className='calRadioStyle' />
                       Happy
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={calm} alt='.....' className='calRadioStyle' />
+                      Calm
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={irritated} alt='.....' className='calRadioStyle' />
+                      Irritated
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={anxious} alt='.....' className='calRadioStyle' />
+                      Anxious
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={depressed} alt='.....' className='calRadioStyle' />
+                      Depressed
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={mood_swings} alt='.....' className='calRadioStyle' />
+                      Mood Swings
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={confused} alt='.....' className='calRadioStyle' />
+                      Confused
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={energetic} alt='.....' className='calRadioStyle' />
+                      Energetic
                     </label>
                   </MDBCol>
                 </MDBRow>
@@ -90,59 +110,61 @@ function CalendarPage() {
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={fine} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={headache} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={fatigue} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={insominia} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={stomach} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={muscle} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={pain} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
                       <input type="radio" name="test" value="small" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <img src={eye} alt='.....' className='calRadioStyle' />
                     </label>
                   </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                  <MDBCol className='calendarLabe2'>Everything is Fine</MDBCol>
+                  <MDBCol className='calendarLabe2'>Headache</MDBCol>
+                  <MDBCol className='calendarLabe2'>Fatigue</MDBCol>
+                  <MDBCol className='calendarLabe2'>Insomnia</MDBCol>
+                  <MDBCol className='calendarLabe2'>Stomach Pain</MDBCol>
+                  <MDBCol className='calendarLabe2'>Muscle Pain</MDBCol>
+                  <MDBCol className='calendarLabe2'>Pain</MDBCol>
+                  <MDBCol className='calendarLabe2'>Eye Discomfort</MDBCol>
                 </MDBRow>
               </MDBRow>
 
@@ -151,60 +173,36 @@ function CalendarPage() {
                 <MDBRow className='calendarIconRow'>
                   <MDBCol>
                     <label className='calendarLabe2'>
-                      <input type="checkbox" name="1" value="0" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <input type="radio" name="test" value="small" />
+                      <img src={stress} alt='.....' className='calRadioStyle' />
+                      Stress
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
-                      <input type="checkbox" name="2" value="1" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <input type="radio" name="test" value="small" />
+                      <img src={alcohol} alt='.....' className='calRadioStyle' />
+                      Alcohol
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
-                      <input type="checkbox" name="1" value="0" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <input type="radio" name="test" value="small" />
+                      <img src={travel} alt='.....' className='calRadioStyle' />
+                      Travel
                     </label>
                   </MDBCol>
                   <MDBCol>
                     <label className='calendarLabe2'>
-                      <input type="checkbox" name="2" value="1" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
+                      <input type="radio" name="test" value="small" />
+                      <img src={injury} alt='.....' className='calRadioStyle' />
+                      Disease or Injury
                     </label>
                   </MDBCol>
-                  <MDBCol>
-                    <label className='calendarLabe2'>
-                      <input type="checkbox" name="1" value="0" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
-                    </label>
-                  </MDBCol>
-                  <MDBCol>
-                    <label className='calendarLabe2'>
-                      <input type="checkbox" name="2" value="1" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
-                    </label>
-                  </MDBCol>
-                  <MDBCol>
-                    <label className='calendarLabe2'>
-                      <input type="checkbox" name="3" value="2" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
-                    </label>
-                  </MDBCol>
-                  <MDBCol>
-                    <label className='calendarLabe2'>
-                      <input type="checkbox" name="4" value="3" />
-                      <img src={calImg} alt='.....' className='calRadioStyle' />
-                      Happy
-                    </label>
-                  </MDBCol>
+                  <MDBCol></MDBCol>
+                  <MDBCol></MDBCol>
+                  <MDBCol></MDBCol>
+                  <MDBCol></MDBCol>
                 </MDBRow>
               </MDBRow>
 
