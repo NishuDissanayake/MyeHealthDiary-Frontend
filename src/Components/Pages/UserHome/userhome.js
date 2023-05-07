@@ -1,9 +1,38 @@
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './userhome.css';
 import uHomeImg from './../../../Assets/User Home Img.jpg';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-function userhome() {
+function Userhome() {
+
+  const [medicines, setMedicines] = useState([]);
+
+  useEffect(() => {
+    getMedicines();
+  }, []);
+
+  const getMedicines = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-active-meds?nic=${nic}`);
+      const medicinesArray = response.data.currentMeds;
+      setMedicines(medicinesArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving medicines failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+
+
   return (
     <MDBContainer breakpoint='sm md lg xl xxl main-cont'>
       <MDBContainer className='uhomeCont1'>
@@ -35,56 +64,39 @@ function userhome() {
           <MDBTable striped>
             <MDBTableHead dark>
               <tr>
+                <th scope='col'>Date</th>
                 <th scope='col'>Name</th>
                 <th scope='col'>Type</th>
-                <th scope='col'>Color</th>
-                <th scope='col'>Qty</th>
+                <th scope='col'>Dosage</th>
                 <th scope='col'>Meals</th>
                 <th scope='col'>Morning</th>
                 <th scope='col'>Afternoon</th>
                 <th scope='col'>Night</th>
+                <th scope='col'>Revoke Status</th>
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              <tr>
-                <th scope='row'>Ventolin</th>
-                <td>Pill</td>
-                <td>Violet</td>
-                <td>1</td>
-                <td>After Meals</td>
-                <td>No</td>
-                <td>No</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <th scope='row'>Ventolin</th>
-                <td>Pill</td>
-                <td>Violet</td>
-                <td>1</td>
-                <td>After Meals</td>
-                <td>No</td>
-                <td>No</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <th scope='row'>Ventolin</th>
-                <td>Pill</td>
-                <td>Violet</td>
-                <td>1</td>
-                <td>After Meals</td>
-                <td>No</td>
-                <td>No</td>
-                <td>Yes</td>
-              </tr>
+              {medicines.map((medicine) => (
+                <tr key={medicine._id}>
+                  <td>{medicine.date_issued}</td>
+                  <td>{medicine.med_name}</td>
+                  <td>{medicine.type}</td>
+                  <td>{medicine.dosage}</td>
+                  <td>{medicine.meals}</td>
+                  <td>{medicine.morning}</td>
+                  <td>{medicine.noon}</td>
+                  <td>{medicine.night}</td>
+                  <td><Link to="/mood-chart">
+                    <MDBBtn className='aprofBtn3'>Revoke Status</MDBBtn>
+                  </Link></td>
+                </tr>
+              ))}
             </MDBTableBody>
           </MDBTable>
-        </MDBRow>
-        <MDBRow className='uHomeBtnR'>
-          <MDBBtn className='uHomeBtn'>Set As Recovered</MDBBtn>
         </MDBRow>
       </MDBContainer>
     </MDBContainer>
   )
 }
 
-export default userhome
+export default Userhome

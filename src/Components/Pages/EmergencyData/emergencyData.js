@@ -1,25 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './userprofile.css';
-import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
+import './emergencyData.css';
+import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import AllImg from './../../../Assets/Allergy Img.jpg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-
-function Userprofile() {
+function EmergencyData() {
 
   const [userData, setUserData] = useState([]);
+  const [nic, setNIC] = useState("");
   const [allergydata, setAllergyData] = useState([]);
 
-  useEffect(() => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    console.log(nic);
     getUserData();
-  }, []);
+    getAllergyData();
+  };
+
 
   const getUserData = async () => {
-    const nic = '200055702644';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=${nic}`);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=` + nic);
       const dataArray = response.data;
       setUserData(dataArray);
     } catch (error) {
@@ -40,14 +43,10 @@ function Userprofile() {
     return age;
   }
 
-  useEffect(() => {
-    getAllergyData();
-  }, []);
 
   const getAllergyData = async () => {
-    const nic = '200055702644';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-allergies?nic=${nic}`);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-allergies?nic=` + nic);
       const allergyArray = response.data.allergies;
       setAllergyData(allergyArray);
     } catch (error) {
@@ -66,17 +65,24 @@ function Userprofile() {
     <MDBContainer>
 
       <MDBContainer className='uprofileCont2'>
-        <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+        <MDBRow className='uprofileT1e'>Emergency Medical Data Profile!!!</MDBRow>
+
+        <MDBRow className='manageProfileR2'>
+          <MDBCol className='manageProfileC'>
+            <form onSubmit={handleClick}>
+              <label className='mprofileText' htmlFor="n_hospital">Insert NIC</label> <br />
+              <input className='mprofileInput' id="nic" type="text" value={nic} onChange={(event) => setNIC(event.target.value)} required></input>
+              <MDBBtn type='submit' className='mb-4 mprofileBtn emBtn' block>Find User</MDBBtn>
+            </form>
+          </MDBCol>
+        </MDBRow>
 
         <MDBRow className='uprofileTbl1'>
           <MDBTable striped>
             <MDBTableHead dark>
               <tr>
-                <th scope='col'>Emergency Medical Information</th>
-                <th><Link to="/manage-profile">
-                  <MDBBtn className='profBtnL'>Update Data</MDBBtn>
-                </Link>
-                </th>
+                <th scope='col' colspan='2'>Emergency Medical Information</th>
+                <th></th>
               </tr>
             </MDBTableHead>
             <MDBTableBody>
@@ -135,10 +141,6 @@ function Userprofile() {
                 <tr>
                   <th scope='col'>Allergy Type</th>
                   <th scope='col'>Allergy Element</th>
-                  <th className='profAllergyBtns'>
-                    <Link to="/manage-profile#allergySection">
-                      <MDBBtn className='profBtnL'>Update Data</MDBBtn>
-                    </Link></th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
@@ -156,23 +158,10 @@ function Userprofile() {
           </MDBCol>
         </MDBRow>
 
-        <MDBRow className='uprofileR4'>
-          <MDBCol className='uprofileB1'>
-            <Link to="/vaccinations">
-              <MDBBtn className='profBtn1'>Visit Vaccinations</MDBBtn>
-            </Link>
-          </MDBCol>
-          <MDBCol className='uprofileB2'>
-            <Link to="/mood-chart">
-              <MDBBtn className='profBtn2'>Visit Mood Chart</MDBBtn>
-            </Link>
-          </MDBCol>
-        </MDBRow>
-
       </MDBContainer>
 
     </MDBContainer>
   )
 }
 
-export default Userprofile
+export default EmergencyData

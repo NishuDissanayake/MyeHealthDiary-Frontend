@@ -12,6 +12,15 @@ import Hospitalization from './Components/Pages/UserHospitalization/hospitalizat
 import MoodChart from './Components/Pages/UserMoodChart/moodchart';
 import Records from './Components/Pages/UserRecords/records';
 import Vaccines from './Components/Pages/UserVaccines/vaccines';
+import Adminprofile from './Components/Pages/AdminProfile/adminprofile';
+import Admindashboard from './Components/Pages/AdminDashboard/admindashboard';
+import AddDoctor from './Components/Pages/AdminDashboard/addDoctor';
+import ManageHospital from './Components/Pages/AdminDashboard/manageHospital';
+import AddHospital from './Components/Pages/AdminDashboard/addHospital';
+import EmergencyData from './Components/Pages/EmergencyData/emergencyData';
+import ProfileUpdate from './Components/Pages/UserProfile/profileUpdate';
+import EmtProfile from './Components/Pages/EMTProfile/emtProfile';
+import AddEmt from './Components/Pages/AdminDashboard/addEmt';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -30,7 +39,16 @@ function App() {
         <Route path="/records" element={<Records />} />
         <Route path="/hospitalization-record" element={<Hospitalization />} />
         <Route path="/mood-chart" element={<MoodChart />} />
+        <Route path="/admin-profile" element={<Adminprofile />} />
+        <Route path="/admin-dashboard" element={<Admindashboard />} />
+        <Route path="/add-doctor" element={<AddDoctor />} />
         <Route path="/vaccinations" element={<Vaccines />} />
+        <Route path="/manage-hospital" element={<ManageHospital />} />
+        <Route path="/emergency" element={<EmergencyData />} />
+        <Route path="/add-hospital" element={<AddHospital />} />
+        <Route path="/add-emt" element={<AddEmt />} />
+        <Route path="/manage-profile" element={<ProfileUpdate />} />
+        <Route path="/emt-profile" element={<EmtProfile />} />
       </Routes>
       <Footer />
       </div>
