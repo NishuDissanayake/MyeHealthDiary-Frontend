@@ -85,7 +85,7 @@ function DoctorFindRecord() {
       setNoon("");
       setNight("");
       setComments("");
-      
+
       Swal.fire({
         title: 'Success!',
         text: 'Medication added successfully!',
@@ -98,6 +98,53 @@ function DoctorFindRecord() {
       Swal.fire({
         title: 'Error!',
         text: 'Medication addition failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+
+  const [rtype, setReportType] = useState('');
+  const [date, setDate] = useState('');
+  const [primary_diagnosis, setPDiagnosis] = useState('');
+  const [doctor_in_charge, setDIC] = useState('');
+  const [admitted_date, SetAdmit] = useState('');
+
+  useEffect(() => {
+    addRecord();
+  }, [])
+
+  const addRecord = async (event) => {
+    event.preventDefault();
+
+    try {
+      const state = "Active";
+
+      const next_clinic_date = new Date();
+      const date_of_discharge = new Date();
+
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/add-record?nic=" + nic + "&type=" + rtype + "&date=" + date + "&primary_diagnosis=" + primary_diagnosis + "&doctor_in_charge=" + doctor_in_charge + "&admitted_date=" + admitted_date + "&date_of_discharge=" + date_of_discharge + "&next_clinic_date=" + next_clinic_date);
+      console.log(res.data);
+
+      setReportType("");
+      setDate("");
+      setPDiagnosis("");
+      setDIC("");
+      SetAdmit("");
+
+      Swal.fire({
+        title: 'Success!',
+        text: 'Medical record added successfully!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Medical record addition failed!',
         icon: 'error',
         confirmButtonText: 'OK'
       });
@@ -136,7 +183,7 @@ function DoctorFindRecord() {
               <td>{record.type}</td>
               <td>{record.primary_diagnosis}</td>
               <td>
-                <Link to={`/hospitalization-record/${record._id}`}>
+                <Link to={`/update-user-record/${record._id}`}>
                   <MDBBtn className='reportBtn'>View Full Report</MDBBtn>
                 </Link></td>
             </tr>
@@ -222,6 +269,45 @@ function DoctorFindRecord() {
           </MDBRow>
           <label className='mprofileText' htmlFor="address">Comments</label> <br />
           <input className='mprofileInput' id="address" type="text" value={comments} onChange={(event) => setComments(event.target.value)} required></input> <br />
+
+          <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Medication</MDBBtn>
+        </form>
+      </MDBRow>
+
+
+      <h2 className='dFindUserTxt'>Add New Medical Record</h2>
+      <MDBRow className='manageProfileR2'>
+        <form onSubmit={addRecord} className='mprofileForm addVaForm'>
+          <legend className='mprofileLegend'>Add New Medical Record</legend>
+          <MDBRow>
+            <MDBCol>
+              <label className='mprofileText' htmlFor="address">Report Type</label> <br />
+              <input className='mprofileInput' id="address" type="text" value={rtype} onChange={(event) => setReportType(event.target.value)} required></input>
+            </MDBCol>
+            <MDBCol>
+              <label className='mprofileText' htmlFor="address">Date</label> <br />
+              <input className='mprofileInput' id="address" type="text" value={date} onChange={(event) => setDate(event.target.value)} required></input>
+            </MDBCol>
+          </MDBRow>
+          <MDBRow>
+            <MDBCol>
+              <label className='mprofileText' htmlFor="address">Primary Diagnosis</label> <br />
+              <input className='mprofileInput' id="address" type="text" value={primary_diagnosis} onChange={(event) => setPDiagnosis(event.target.value)} required></input>
+            </MDBCol>
+            <MDBCol>
+              <label className='mprofileText' htmlFor="address">Doctor in Charge</label> <br />
+              <input className='mprofileInput' id="address" type="text" value={doctor_in_charge} onChange={(event) => setDIC(event.target.value)} required></input>
+            </MDBCol>
+          </MDBRow>
+          <MDBRow>
+            <MDBCol>
+              <label className='mprofileText' htmlFor="address">Admitted Date</label> <br />
+              <input className='mprofileInput' id="address" type="text" value={admitted_date} onChange={(event) => SetAdmit(event.target.value)} required></input> <br />
+            </MDBCol>
+            <MDBCol className='duprecspan'>
+              <span className='duprecspan'>* Please note that the current date is being sent as the Date of Discharge and Next Clinic Date by default. Please update these values when necessary.</span>
+            </MDBCol>
+          </MDBRow>
 
           <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Medication</MDBBtn>
         </form>

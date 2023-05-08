@@ -261,7 +261,7 @@ function Admindashboard() {
                                     <td>{user.phone_number}</td>
                                     <td>{user.email}</td>
                                     <td>{user.status}</td>
-                                    <td><Link to="/mood-chart">
+                                    <td><Link to="/user-emergency">
                                         <MDBBtn className='aprofBtn3'>View Profile</MDBBtn>
                                     </Link></td>
                                 </tr>

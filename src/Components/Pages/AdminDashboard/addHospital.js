@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBInput, MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import './addHospital.css';
@@ -39,6 +39,107 @@ function AddHospital() {
             });
         }
     };
+
+
+    const [n_address, setNAddress] = useState('');
+    const [n_phone, setPhone] = useState('');
+    const [n_regno, setRegno] = useState('');
+
+    useEffect(() => {
+        updateHAddress();
+    }, [])
+
+    const updateHAddress = async (event) => {
+        event.preventDefault();
+
+        try {
+
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-hospital-address?reg_no=" + n_regno + "&n_address=" + n_address);
+
+            setNAddress("");
+
+            Swal.fire({
+                title: 'Success!',
+                text: 'Hospital address updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Hospital address update failed!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    };
+
+    useEffect(() => {
+        updatePhone();
+    }, [])
+
+    const updatePhone = async (event) => {
+        event.preventDefault();
+
+        try {
+
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-hospital-phone?reg_no=" + n_regno + "&n_phone=" + n_phone);
+            console.log(res.data);
+
+            setPhone("");
+
+            Swal.fire({
+                title: 'Success!',
+                text: 'Phone number updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Phone number update failed!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    };
+
+    useEffect(() => {
+        deleteUser();
+    }, [])
+
+    const deleteUser = async (event) => {
+        event.preventDefault();
+
+        try {
+            const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-hospital?reg_no=" + n_regno);
+            console.log(res.data);
+
+            setRegno("");
+
+            Swal.fire({
+                title: 'Success!',
+                text: 'Hospital deactivation successful!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Hospital deactivation failed! Recheck registration number!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    };
+
+
     return (
         <MDBContainer className='add-hos-cont1'>
             <form onSubmit={handleSubmit} className="addHospitalForm">
@@ -69,6 +170,49 @@ function AddHospital() {
                 <MDBRow></MDBRow>
                 <MDBBtn type='submit' className='mb-4 btnLogin doc-button' block>Add Hospital</MDBBtn>
             </form>
+
+            <MDBContainer>
+                <MDBRow className='uprofileT1x manTxt1'>Manage Hospital!</MDBRow>
+
+                <MDBRow className='manageProfileR2'>
+                    <MDBCol className='manageProfileC'>
+                        <form onSubmit={updateHAddress} className='mprofileForm'>
+                            <legend className='mprofileLegend'>Update Address</legend>
+                            <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
+                            <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
+                            <label className='mprofileText' htmlFor="n_hospital">New Address</label> <br />
+                            <input className='mprofileInput' id="n_hospital" type="text" value={n_address} onChange={(event) => setNAddress(event.target.value)} required></input> <br />
+                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Address</MDBBtn>
+                        </form>
+                    </MDBCol>
+
+                    <MDBCol className='manageProfileC'>
+                        <form onSubmit={updatePhone} className='mprofileForm'>
+                            <legend className='mprofileLegend'>Update Phone Number</legend>
+                            <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
+                            <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
+                            <label className='mprofileText'>New Phone Number</label> <br />
+                            <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
+                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
+                        </form>
+                    </MDBCol>
+                </MDBRow>
+
+                <MDBRow className='manageProfileR2'>
+                    <MDBCol className='manageProfileC'>
+                        <form onSubmit={deleteUser} className='mprofileForm'>
+                            <legend className='mprofileLegendx'>Remove Hospital</legend>
+                            <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
+                            <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
+                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Remove Hospital</MDBBtn>
+                        </form>
+                    </MDBCol>
+
+                    <MDBCol className='manageProfileC'>
+                    </MDBCol>
+                </MDBRow>
+
+            </MDBContainer>
 
         </MDBContainer>
     )
