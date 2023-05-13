@@ -10,14 +10,14 @@ import HospImg from './../../../Assets/Hospitalization Record Img.png';
 function DoctorUpdateRecord() {
 
   const [records, setRecords] = useState([]);
-  // const [treatments, setTreatments] = useState([]);
+  const [treatments, setTreatments] = useState([]);
   const { id } = useParams();
-  // const [bandb, setBandB] = useState([]);
-  // const [labTests, setLabTests] = useState([]);
-  // const [temperatures, setTemp] = useState([]);
-  // const [bp, setBP] = useState([]);
-  // const [comments, setComments] = useState([]);
-  // const [labReports, setLabReports] = useState([]);
+  const [bandb, setBandB] = useState([]);
+  const [labTests, setLabTests] = useState([]);
+  const [temperatures, setTemp] = useState([]);
+  const [bp, setBP] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [labReports, setLabReports] = useState([]);
 
   useEffect(() => {
     getRecords();
@@ -41,156 +41,156 @@ function DoctorUpdateRecord() {
     }
   };
 
-  // useEffect(() => {
-  //   getTreatments();
-  // }, []);
+  useEffect(() => {
+    getTreatments();
+  }, []);
 
-  // const getTreatments = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-treatments?nic=` + + nic + `&_id=` + id);
-  //     const treatsArray = response.data.treatments;
-  //     setTreatments(treatsArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving treatments failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
+  const getTreatments = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-treatments?nic=` + + nic + `&_id=` + id);
+      const treatsArray = response.data.treatments;
+      setTreatments(treatsArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving treatments failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
 
-  // useEffect(() => {
-  //   getBandB();
-  // }, []);
+  useEffect(() => {
+    getBandB();
+  }, []);
 
-  // const getBandB = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-bandb?nic=` + nic + `&_id=` + id);
-  //     const bbArray = response.data.bandb;
-  //     setBandB(bbArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving bladder and bowel functions failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
-
-
-  // useEffect(() => {
-  //   getLabTests();
-  // }, []);
-
-  // const getLabTests = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-labtests?nic=` + + nic + `&_id=` + id);
-  //     const ltestArray = response.data.labs;
-  //     setLabTests(ltestArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving lab tests failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
+  const getBandB = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-bandb?nic=` + nic + `&_id=` + id);
+      const bbArray = response.data.bandb;
+      setBandB(bbArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving bladder and bowel functions failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
 
 
-  // useEffect(() => {
-  //   getTemperature();
-  // }, []);
+  useEffect(() => {
+    getLabTests();
+  }, []);
 
-  // const getTemperature = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-temperatures?nic=` + + nic + `&_id=` + id);
-  //     const tempArray = response.data.temps;
-  //     setTemp(tempArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving temperatures failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
-
-
-  // useEffect(() => {
-  //   getBloodPressure();
-  // }, []);
-
-  // const getBloodPressure = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-blood-pressures?nic=` + + nic + `&_id=` + id);
-  //     const bpArray = response.data.bp;
-  //     setBP(bpArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving blood pressures failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getComments();
-  // }, []);
-
-  // const getComments = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-comments?nic=` + + nic + `&_id=` + id);
-  //     const commentsArray = response.data.com;
-  //     setComments(commentsArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving comments failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
+  const getLabTests = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-labtests?nic=` + + nic + `&_id=` + id);
+      const ltestArray = response.data.labs;
+      setLabTests(ltestArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving lab tests failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
 
 
-  // useEffect(() => {
-  //   getLabReports();
-  // }, []);
+  useEffect(() => {
+    getTemperature();
+  }, []);
 
-  // const getLabReports = async () => {
-  //   const nic = '200055702644';
-  //   try {
-  //     const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-reports?nic=` + + nic + `&_id=` + id);
-  //     const lreportsArray = response.data.report;
-  //     setLabReports(lreportsArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //     Swal.fire({
-  //       title: 'Error!',
-  //       text: 'Retrieving lab reports failed!',
-  //       icon: 'error',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }
-  // };
+  const getTemperature = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-temperatures?nic=` + + nic + `&_id=` + id);
+      const tempArray = response.data.temps;
+      setTemp(tempArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving temperatures failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+
+  useEffect(() => {
+    getBloodPressure();
+  }, []);
+
+  const getBloodPressure = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-blood-pressures?nic=` + + nic + `&_id=` + id);
+      const bpArray = response.data.bp;
+      setBP(bpArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving blood pressures failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
+  const getComments = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-comments?nic=` + + nic + `&_id=` + id);
+      const commentsArray = response.data.com;
+      setComments(commentsArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving comments failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+
+  useEffect(() => {
+    getLabReports();
+  }, []);
+
+  const getLabReports = async () => {
+    const nic = '200055702644';
+    try {
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-reports?nic=` + + nic + `&_id=` + id);
+      const lreportsArray = response.data.report;
+      setLabReports(lreportsArray);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Retrieving lab reports failed!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
 
   return (
     <MDBContainer>
@@ -239,12 +239,17 @@ function DoctorUpdateRecord() {
           </MDBCol>
           <MDBCol>
             <img src={HospImg} alt='....' className='hospImgStyles' />
+            <MDBRow>
+            <Link to={`/update-report/${id}`} className='up-link-rec'>
+              <MDBBtn className='profBtnL'>Update Data</MDBBtn>
+            </Link>
+            </MDBRow>
           </MDBCol>
         </MDBRow>
 
       </MDBContainer>
 
-      {/* <MDBContainer className='hospContL'>
+      <MDBContainer className='hospContL'>
 
         <MDBRow className='hospR3'>
           <MDBTable striped>
@@ -366,7 +371,7 @@ function DoctorUpdateRecord() {
               {comments.map((comments) => (
                 <tr key={comments._id}>
                   <td>{comments.date}</td>
-                  <td>{comments.comments}</td>
+                  <td>{comments.comment}</td>
                   <td>{comments.added_by}</td>
                 </tr>
               ))}
@@ -397,7 +402,7 @@ function DoctorUpdateRecord() {
           </MDBTable>
         </MDBRow>
 
-      </MDBContainer> */}
+      </MDBContainer>
 
     </MDBContainer>
 

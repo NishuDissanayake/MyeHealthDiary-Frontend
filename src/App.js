@@ -26,7 +26,9 @@ import DoctorProfile from './Components/Pages/DoctorProfile/doctorProfile';
 import DoctorCurMeds from './Components/Pages/DoctorProfile/doctorCurrentMeds';
 import DoctorFindRecord from './Components/Pages/DoctorProfile/doctorFindRecord';
 import DoctorUpdateRecord from './Components/Pages/DoctorProfile/doctorUpdateRecord';
+import updateReport from './Components/Pages/DoctorProfile/updateReport';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import UpdateReport from './Components/Pages/DoctorProfile/updateReport';
 
 function App() {
   return (
@@ -58,7 +60,8 @@ function App() {
         <Route path="/add-current-meds" element={<DoctorCurMeds />} />
         <Route path="/doctor-profile" element={<DoctorProfile />} />
         <Route path="/find-user-record" element={<DoctorFindRecord />} />
-        <Route path="/update-user-record" element={<DoctorUpdateRecord />} />
+        <Route path="/update-user-record/:id" element={<DoctorUpdateRecord />} />
+        <Route path="/update-report/:id" element={<UpdateReport />} />
       </Routes>
       <Footer />
       </div>
