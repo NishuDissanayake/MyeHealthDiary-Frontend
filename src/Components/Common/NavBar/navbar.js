@@ -17,6 +17,11 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
     const [showNavText, setShowNavText] = useState(false);
 
+    const logout = () => {
+        localStorage.clear();
+        window.location.href = '/';
+    }
+
     return (
         <MDBNavbar expand='lg' className='navbarCol'>
             <MDBContainer>
@@ -53,13 +58,20 @@ export default function Navbar() {
                                 Doctors
                             </MDBNavbarLink>
                         </MDBNavbarItem>
+                        {localStorage.getItem('role') !== 'admin' ? <></> : (
+                            <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='/admin-dashboard'>
+                                Admin Dashboard
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        )}
                         <MDBNavbarItem>
                             <MDBNavbarLink className='navTextCol' tag={Link} to='/profile'>
                                 Profile
                             </MDBNavbarLink>
                         </MDBNavbarItem>
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' tag={Link} to='/#'>
+                            <MDBNavbarLink className='navTextCol' tag={Link} onClick={logout}>
                                 Log Out
                             </MDBNavbarLink>
                         </MDBNavbarItem>
