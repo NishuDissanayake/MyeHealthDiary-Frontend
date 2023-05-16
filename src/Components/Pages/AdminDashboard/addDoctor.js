@@ -14,14 +14,14 @@ function AddDoctor() {
     const [phone_number, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [added_by, setAddedBy] = useState('');
-    const [passwrd, setPass] = useState('');
+    const [pass, setPass] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const added_by = "U00T";
 
-            const res = await axios.post("https://my-ehealth-diary-backend.herokuapp.com/api/add-doctor", { doctor_id, doctor_name, hospital, specialization, qualifications, phone_number, email, added_by, passwrd });
+            const res = await axios.post("https://my-ehealth-diary-backend.herokuapp.com/api/add-doctor", { doctor_id, doctor_name, hospital, specialization, qualifications, phone_number, email, added_by, pass });
             console.log(res.data);
 
             setId("");
@@ -89,8 +89,8 @@ function AddDoctor() {
                             <MDBInput className='inputField' id="phone_number" type="tel" value={phone_number} onChange={(event) => setPhoneNumber(event.target.value)} required />
                         </MDBRow>
                         <MDBRow className='d-inputLogin'>
-                            <label htmlFor="passwrd" className='d-loginLText'>Password</label>
-                            <MDBInput className='inputField' id="passwrd" type="password" value={passwrd} onChange={(event) => setPass(event.target.value)} required />
+                            <label htmlFor="pass" className='d-loginLText'>Password</label>
+                            <MDBInput className='inputField' id="pass" type="password" value={pass} onChange={(event) => setPass(event.target.value)} required />
                         </MDBRow>
                     </MDBCol>
                 </MDBRow>

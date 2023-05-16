@@ -15,7 +15,6 @@ import Swal from 'sweetalert2';
 
 export default function Login() {
 
-
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
@@ -35,7 +34,7 @@ export default function Login() {
             confirmButtonText: 'OK'
         });
 
-        window.location.href = '/home';
+        history.push('/find-user-record');
 
     } catch (error) {
         console.log(error);

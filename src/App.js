@@ -18,6 +18,7 @@ import AddDoctor from './Components/Pages/AdminDashboard/addDoctor';
 import ManageHospital from './Components/Pages/AdminDashboard/manageHospital';
 import AddHospital from './Components/Pages/AdminDashboard/addHospital';
 import EmergencyData from './Components/Pages/EmergencyData/emergencyData';
+import UserEmergency from './Components/Pages/EmergencyData/userEmergency';
 import ProfileUpdate from './Components/Pages/UserProfile/profileUpdate';
 import EmtProfile from './Components/Pages/EMTProfile/emtProfile';
 import AddEmt from './Components/Pages/AdminDashboard/addEmt';
@@ -52,6 +53,7 @@ function App() {
         <Route path="/vaccinations" element={<Vaccines />} />
         <Route path="/manage-hospital" element={<ManageHospital />} />
         <Route path="/emergency" element={<EmergencyData />} />
+        <Route path="/user-emergency-data" element={<UserEmergency />} />
         <Route path="/add-hospital" element={<AddHospital />} />
         <Route path="/add-emt" element={<AddEmt />} />
         <Route path="/manage-profile" element={<ProfileUpdate />} />

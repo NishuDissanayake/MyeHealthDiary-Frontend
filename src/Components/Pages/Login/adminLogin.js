@@ -15,7 +15,6 @@ import Swal from 'sweetalert2';
 
 export default function Login() {
 
-
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
@@ -23,7 +22,7 @@ export default function Login() {
     event.preventDefault();
     try {
 
-        const res = await axios.post(`http://localhost:5000/api/login?email=` + email + `&pass=` + pass);
+        const res = await axios.post(`http://localhost:5000/api/login?email=` + email + `&pwrd=` + pass);
         console.log(res.data);
 
         setEmail("");
@@ -35,7 +34,7 @@ export default function Login() {
             confirmButtonText: 'OK'
         });
 
-        window.location.href = '/home';
+        history.push('/admin-dashboard');
 
     } catch (error) {
         console.log(error);
