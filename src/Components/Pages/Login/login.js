@@ -24,7 +24,7 @@ export default function Login() {
     try {
 
         const res = await axios.post(`http://localhost:5000/api/login?email=` + email + `&pass=` + pass);
-        console.log(res.data);
+        console.log(res.data.token);
 
         setEmail("");
         setPass("");
@@ -35,7 +35,10 @@ export default function Login() {
             confirmButtonText: 'OK'
         });
 
-        window.location.href = '/home';
+        //const decoded_token = Jwt.docode(res.data.token)
+        //localStorage.setItem('token', res.data.token)
+
+        //window.location.href = '/home';
 
     } catch (error) {
         console.log(error);

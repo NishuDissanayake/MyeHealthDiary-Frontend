@@ -34,7 +34,7 @@ export default function EmtLogin() {
             confirmButtonText: 'OK'
         });
 
-        history.push('/emergency');
+        window.location.href = '/emergency';
 
     } catch (error) {
         console.log(error);
@@ -63,13 +63,6 @@ export default function EmtLogin() {
             </MDBRow>
             <MDBRow>
               <MDBBtn type='submit' className='mb-4 btnLogin' block>Login</MDBBtn>
-            </MDBRow>
-            <MDBRow>
-              <div className='text-center'>
-                <p>
-                  Don't have an account? <span className='signupBText'><a href='#!'>Sign Up</a></span>
-                </p>
-              </div>
             </MDBRow>
           </MDBRow>
         </MDBCol>

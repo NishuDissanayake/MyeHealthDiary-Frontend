@@ -34,7 +34,7 @@ export default function Login() {
             confirmButtonText: 'OK'
         });
 
-        history.push('/admin-dashboard');
+        window.location.href = '/admin-dashboard';
 
     } catch (error) {
         console.log(error);
@@ -63,13 +63,6 @@ export default function Login() {
             </MDBRow>
             <MDBRow>
               <MDBBtn type='submit' className='mb-4 btnLogin' block>Login</MDBBtn>
-            </MDBRow>
-            <MDBRow>
-              <div className='text-center'>
-                <p>
-                  Don't have an account? <span className='signupBText'><a href='#!'>Sign Up</a></span>
-                </p>
-              </div>
             </MDBRow>
           </MDBRow>
         </MDBCol>

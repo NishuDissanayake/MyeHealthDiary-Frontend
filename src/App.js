@@ -1,6 +1,9 @@
 import './App.css';
 import NavBar from './Components/Common/NavBar/navbar';
 import Login from './Components/Pages/Login/login';
+import AdminLogin from './Components/Pages/Login/adminLogin';
+import EmtLogin from './Components/Pages/Login/emtLogin';
+import DoctorLogin from './Components/Pages/Login/doctorLogin';
 import Signup from './Components/Pages/UserSignUp/signup';
 import Home from './Components/Pages/UserHome/userhome';
 import Footer from './Components/Common/Footer/footer';
@@ -40,6 +43,9 @@ function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/doctor-login" element={<DoctorLogin />} />
+        <Route path="/emt-login" element={<EmtLogin />} />
         <Route path="/home" element={<Home />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/profile" element={<Profile />} />
