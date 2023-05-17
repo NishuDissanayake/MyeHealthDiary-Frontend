@@ -16,9 +16,29 @@ function Userhome() {
 
   }, []);
 
+  const currentDate = new Date().toLocaleDateString(); 
+
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const date = new Date();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+      const formattedTime = `${hours}:${minutes}:${seconds}`;
+      setCurrentTime(formattedTime);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
 
   const getMedicines = async () => {
-    const nic = '200055702640';
+    const nic = localStorage.getItem('nic');
+    console.log(nic);
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-active-meds?nic=${nic}`);
       const medicinesArray = response.data.currentMeds;
@@ -50,16 +70,12 @@ function Userhome() {
               <MDBCol>
                 <MDBRow className='uHomeT3'>Don't forget to take your meds on time!</MDBRow>
                 <MDBRow>
-                  <MDBCol lg='4' md='8' className='uHomeT4'>Condition:</MDBCol>
-                  <MDBCol lg='8' md='16' className='uHomeT5'>Acute Leukaemia</MDBCol>
+                  <MDBCol lg='4' md='8' className='uHomeT4'>Today's Date:</MDBCol>
+                  <MDBCol lg='8' md='16' className='uHomeT5'>{currentDate}</MDBCol>
                 </MDBRow>
                 <MDBRow>
-                  <MDBCol lg='4' md='8' className='uHomeT4'>Start Date:</MDBCol>
-                  <MDBCol lg='8' md='16' className='uHomeT5'>02 - 02 - 2023</MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol lg='4' md='8' className='uHomeT4'>Doctor:</MDBCol>
-                  <MDBCol lg='8' md='16' className='uHomeT5'>Dr. John Davis</MDBCol>
+                  <MDBCol lg='4' md='8' className='uHomeT4'>Current Time:</MDBCol>
+                  <MDBCol lg='8' md='16' className='uHomeT5'>{currentTime}</MDBCol>
                 </MDBRow>
               </MDBCol>
               <MDBCol><center><img src={uHomeImg} alt='...' className='uHomeImgCls' /></center></MDBCol>

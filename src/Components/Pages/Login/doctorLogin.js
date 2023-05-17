@@ -11,6 +11,7 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { decodeToken } from '../../../Utils/tokenDecode';
 
 
 export default function Login() {
@@ -33,6 +34,24 @@ export default function Login() {
             icon: 'success',
             confirmButtonText: 'OK'
         });
+
+        const decoded_token = decodeToken(res.data.token);
+        if (decoded_token) {
+          const { userId, role, name, email } = decoded_token;
+  
+          // Use the userRole, email, and name as needed
+          console.log('User ID:', userId);
+          console.log('Role:', role);
+          console.log('Name:', name);
+          console.log('Email:', email);
+  
+  
+          localStorage.setItem('role', role);
+          localStorage.setItem('name', name);
+          localStorage.setItem('email', email);
+        }
+  
+        localStorage.setItem('token', res.data.token);
 
         window.location.href = '/find-user-record';
 

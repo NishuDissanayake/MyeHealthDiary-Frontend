@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './signup.css';
 import SignupImage from './../../../Assets/Signup Image.png';
 import {
@@ -15,6 +15,7 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 export default function Signup() {
 
@@ -37,7 +38,7 @@ export default function Signup() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post(`http://localhost:5000/api/add-user?first_name=` + fname + `&last_name=` + lname + `&address=` + address + `&phone_number=` + contact + `&birth_day=` + bday + `&gender=` + gender + `&nic=` + nic + `&email=` + email + `&emergency_contact_person=` + emcontactname + `&emergency_contact=` + emcontact + `&blood_group=` + bgroup + `&chronic_disease=` + chronicdisease + `&health_insurance_provider=` + insurance + `&pass=` + pass);
+            const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/add-user?first_name=` + fname + `&last_name=` + lname + `&address=` + address + `&phone_number=` + contact + `&birth_day=` + bday + `&gender=` + gender + `&nic=` + nic + `&email=` + email + `&emergency_contact_person=` + emcontactname + `&emergency_contact=` + emcontact + `&blood_group=` + bgroup + `&chronic_disease=` + chronicdisease + `&health_insurance_provider=` + insurance + `&pass=` + pass);
             console.log(res.data);
 
             setFname("");
@@ -61,6 +62,8 @@ export default function Signup() {
                 confirmButtonText: 'OK'
             });
 
+            window.location.href = '/login';
+
         } catch (error) {
             console.log(error);
             Swal.fire({
@@ -74,7 +77,7 @@ export default function Signup() {
 
 
     return (
-        <form className='signForm'  onSubmit={handleSubmit}>
+        <form className='signForm' onSubmit={handleSubmit}>
             <div className='formContent center'>
                 <MDBRow className='mb-4 mainColSign'>
                     <span className='signText'><img src={SignupImage} className="signImage" />Sign Up</span>
@@ -171,13 +174,15 @@ export default function Signup() {
                     </MDBRow>
                     <MDBRow>
                         <div className='signBtnCen'>
-                        <MDBBtn type='submit' className='mb-4 btnSign' block>Sign Up</MDBBtn>
+                            <MDBBtn type='submit' className='mb-4 btnSign' block>Sign Up</MDBBtn>
                         </div>
                     </MDBRow>
                     <MDBRow>
                         <div className='text-center'>
                             <p>
-                                Already have an account? <span className='loginBText'><a href='#!'>Login</a></span>
+                                Already have an account? <span className='loginBText'><Link to="/login">
+                                    Login
+                                </Link></span>
                             </p>
                         </div>
                     </MDBRow>

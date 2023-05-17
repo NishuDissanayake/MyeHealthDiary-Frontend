@@ -12,6 +12,7 @@ import {
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { decodeToken } from '../../../Utils/tokenDecode';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
 
@@ -90,7 +91,9 @@ export default function Login() {
             <MDBRow>
               <div className='text-center'>
                 <p>
-                  Don't have an account? <span className='signupBText'><a href='#!'>Sign Up</a></span>
+                  Don't have an account? <span className='signupBText'><Link to="/register">
+                    Sign Up
+                  </Link></span>
                 </p>
               </div>
             </MDBRow>

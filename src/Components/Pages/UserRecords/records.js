@@ -15,7 +15,8 @@ function Records() {
   }, []);
 
   const getRecords = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
+    console.log(nic);
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-user-data?nic=` + + nic);
       const reportsArray = response.data[0].medical_reports;
