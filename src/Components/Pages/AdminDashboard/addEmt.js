@@ -48,51 +48,52 @@ function AddDoctor() {
     };
 
     return (
+        <>
+            {localStorage.getItem('role') !== 'admin' ? window.location.href = '/' : (
+                <MDBContainer className='add-doc-cont1'>
+                    <form onSubmit={handleSubmit} className="addDoctorForm">
+                        <h1 className='addDoctorForm-heading'>Add a New EMT</h1>
 
-        <MDBContainer className='add-doc-cont1'>
-            <form onSubmit={handleSubmit} className="addDoctorForm">
-                <h1 className='addDoctorForm-heading'>Add a New EMT</h1>
+                        <MDBRow>
+                            <MDBCol className='doctor-form-col'>
+                                <MDBRow className='d-inputLogin'>
+                                    <label className='d-loginLText' htmlFor="emt_id">EMT ID</label>
+                                    <MDBInput className='inputField' id="emt_id" type="text" value={emt_id} onChange={(event) => setId(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="emt_name" className='d-loginLText'>EMT Name</label>
+                                    <MDBInput className='inputField' id="emt_name" type="text" value={emt_name} onChange={(event) => setName(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="hospital" className='d-loginLText'>Hospital</label>
+                                    <MDBInput className='inputField' id="hospital" type="text" value={hospital} onChange={(event) => setHospital(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="email" className='d-loginLText'>Email</label>
+                                    <MDBInput className='inputField doctor-email-input' id="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+                                </MDBRow>
+                            </MDBCol>
+                            <MDBCol>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="designation" className='d-loginLText'>Designation</label>
+                                    <MDBInput className='inputField' id="designation" type="text" value={designation} onChange={(event) => setDesignation(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="phone_number" className='d-loginLText'>Phone Number</label>
+                                    <MDBInput className='inputField' id="phone_number" type="tel" value={phone_number} onChange={(event) => setPhoneNumber(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="pass" className='d-loginLText'>Password</label>
+                                    <MDBInput className='inputField' id="pass" type="password" value={pass} onChange={(event) => setPass(event.target.value)} required />
+                                </MDBRow>
+                            </MDBCol>
+                        </MDBRow>
+                        <MDBRow></MDBRow>
+                        <MDBBtn type='submit' className='mb-4 btnLogin doc-button' block>Add EMT Member</MDBBtn>
+                    </form>
 
-                <MDBRow>
-                    <MDBCol className='doctor-form-col'>
-                        <MDBRow className='d-inputLogin'>
-                            <label className='d-loginLText' htmlFor="emt_id">EMT ID</label>
-                            <MDBInput className='inputField' id="emt_id" type="text" value={emt_id} onChange={(event) => setId(event.target.value)} required />
-                        </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="emt_name" className='d-loginLText'>EMT Name</label>
-                            <MDBInput className='inputField' id="emt_name" type="text" value={emt_name} onChange={(event) => setName(event.target.value)} required />
-                        </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="hospital" className='d-loginLText'>Hospital</label>
-                            <MDBInput className='inputField' id="hospital" type="text" value={hospital} onChange={(event) => setHospital(event.target.value)} required />
-                        </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="email" className='d-loginLText'>Email</label>
-                            <MDBInput className='inputField doctor-email-input' id="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
-                        </MDBRow>
-                    </MDBCol>
-                    <MDBCol>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="designation" className='d-loginLText'>Designation</label>
-                            <MDBInput className='inputField' id="designation" type="text" value={designation} onChange={(event) => setDesignation(event.target.value)} required />
-                        </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="phone_number" className='d-loginLText'>Phone Number</label>
-                            <MDBInput className='inputField' id="phone_number" type="tel" value={phone_number} onChange={(event) => setPhoneNumber(event.target.value)} required />
-                        </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="pass" className='d-loginLText'>Password</label>
-                            <MDBInput className='inputField' id="pass" type="password" value={pass} onChange={(event) => setPass(event.target.value)} required />
-                        </MDBRow>
-                    </MDBCol>
-                </MDBRow>
-                <MDBRow></MDBRow>
-                <MDBBtn type='submit' className='mb-4 btnLogin doc-button' block>Add EMT Member</MDBBtn>
-            </form>
-
-        </MDBContainer>
-
+                </MDBContainer>
+            )}</>
     )
 }
 

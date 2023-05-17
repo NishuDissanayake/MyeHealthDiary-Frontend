@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './emergencyData.css';
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
 import AllImg from './../../../Assets/Allergy Img.jpg';
@@ -61,6 +61,7 @@ function EmergencyData() {
 
 
   return (
+
     <MDBContainer>
 
       <MDBContainer className='uprofileCont2'>

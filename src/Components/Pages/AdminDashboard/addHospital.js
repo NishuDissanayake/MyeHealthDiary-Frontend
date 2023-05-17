@@ -141,80 +141,85 @@ function AddHospital() {
 
 
     return (
-        <MDBContainer className='add-hos-cont1'>
-            <form onSubmit={handleSubmit} className="addHospitalForm">
-                <h1 className='addHospitalForm-heading'>Add a New Hospital</h1>
 
-                <MDBRow>
-                    <MDBCol className='hospital-form-col'>
-                        <MDBRow className='d-inputLogin'>
-                            <label className='d-loginLText' htmlFor="hospital_regno">Hospital Registration No</label>
-                            <MDBInput className='inputField' id="hospital_regno" type="text" value={hospital_regno} onChange={(event) => setHospitalRegNo(event.target.value)} required />
+        <>
+            {localStorage.getItem('role') !== 'admin' ? window.location.href = '/' : (
+
+                <MDBContainer className='add-hos-cont1'>
+                    <form onSubmit={handleSubmit} className="addHospitalForm">
+                        <h1 className='addHospitalForm-heading'>Add a New Hospital</h1>
+
+                        <MDBRow>
+                            <MDBCol className='hospital-form-col'>
+                                <MDBRow className='d-inputLogin'>
+                                    <label className='d-loginLText' htmlFor="hospital_regno">Hospital Registration No</label>
+                                    <MDBInput className='inputField' id="hospital_regno" type="text" value={hospital_regno} onChange={(event) => setHospitalRegNo(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="hospital_name" className='d-loginLText'>Hospital Name</label>
+                                    <MDBInput className='inputField' id="hospital_name" type="text" value={hospital_name} onChange={(event) => setHospitalName(event.target.value)} required />
+                                </MDBRow>
+                            </MDBCol>
+                            <MDBCol>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="phone_number" className='d-loginLText'>Phone Number</label>
+                                    <MDBInput className='inputField' id="phone_number" type="tel" value={phone_number} onChange={(event) => setPhoneNumber(event.target.value)} required />
+                                </MDBRow>
+                                <MDBRow className='d-inputLogin'>
+                                    <label htmlFor="address" className='d-loginLText'>Address</label>
+                                    <MDBInput className='inputField' id="address" type="text" value={address} onChange={(event) => setAddress(event.target.value)} required />
+                                </MDBRow>
+                            </MDBCol>
                         </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="hospital_name" className='d-loginLText'>Hospital Name</label>
-                            <MDBInput className='inputField' id="hospital_name" type="text" value={hospital_name} onChange={(event) => setHospitalName(event.target.value)} required />
+                        <MDBRow></MDBRow>
+                        <MDBBtn type='submit' className='mb-4 btnLogin doc-button' block>Add Hospital</MDBBtn>
+                    </form>
+
+                    <MDBContainer>
+                        <MDBRow className='uprofileT1x manTxt1'>Manage Hospital!</MDBRow>
+
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateHAddress} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Address</legend>
+                                    <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
+                                    <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
+                                    <label className='mprofileText' htmlFor="n_hospital">New Address</label> <br />
+                                    <input className='mprofileInput' id="n_hospital" type="text" value={n_address} onChange={(event) => setNAddress(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Address</MDBBtn>
+                                </form>
+                            </MDBCol>
+
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updatePhone} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Phone Number</legend>
+                                    <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
+                                    <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
+                                    <label className='mprofileText'>New Phone Number</label> <br />
+                                    <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
+                                </form>
+                            </MDBCol>
                         </MDBRow>
-                    </MDBCol>
-                    <MDBCol>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="phone_number" className='d-loginLText'>Phone Number</label>
-                            <MDBInput className='inputField' id="phone_number" type="tel" value={phone_number} onChange={(event) => setPhoneNumber(event.target.value)} required />
+
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={deleteUser} className='mprofileForm'>
+                                    <legend className='mprofileLegendx'>Remove Hospital</legend>
+                                    <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
+                                    <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Remove Hospital</MDBBtn>
+                                </form>
+                            </MDBCol>
+
+                            <MDBCol className='manageProfileC'>
+                            </MDBCol>
                         </MDBRow>
-                        <MDBRow className='d-inputLogin'>
-                            <label htmlFor="address" className='d-loginLText'>Address</label>
-                            <MDBInput className='inputField' id="address" type="text" value={address} onChange={(event) => setAddress(event.target.value)} required />
-                        </MDBRow>
-                    </MDBCol>
-                </MDBRow>
-                <MDBRow></MDBRow>
-                <MDBBtn type='submit' className='mb-4 btnLogin doc-button' block>Add Hospital</MDBBtn>
-            </form>
 
-            <MDBContainer>
-                <MDBRow className='uprofileT1x manTxt1'>Manage Hospital!</MDBRow>
+                    </MDBContainer>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateHAddress} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Address</legend>
-                            <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
-                            <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
-                            <label className='mprofileText' htmlFor="n_hospital">New Address</label> <br />
-                            <input className='mprofileInput' id="n_hospital" type="text" value={n_address} onChange={(event) => setNAddress(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Address</MDBBtn>
-                        </form>
-                    </MDBCol>
-
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updatePhone} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Phone Number</legend>
-                            <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
-                            <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
-                            <label className='mprofileText'>New Phone Number</label> <br />
-                            <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
-
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={deleteUser} className='mprofileForm'>
-                            <legend className='mprofileLegendx'>Remove Hospital</legend>
-                            <label className='mprofileText' htmlFor="n_hospital">Registration Number</label> <br />
-                            <input className='mprofileInput' id="n_hospital" type="text" value={n_regno} onChange={(event) => setRegno(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Remove Hospital</MDBBtn>
-                        </form>
-                    </MDBCol>
-
-                    <MDBCol className='manageProfileC'>
-                    </MDBCol>
-                </MDBRow>
-
-            </MDBContainer>
-
-        </MDBContainer>
+                </MDBContainer>
+            )}</>
     )
 }
 

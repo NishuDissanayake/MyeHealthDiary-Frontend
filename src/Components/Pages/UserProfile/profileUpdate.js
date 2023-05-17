@@ -318,111 +318,115 @@ function ProfileUpdate() {
 
 
     return (
-        <MDBContainer className='manageProfile1'>
 
-            <MDBContainer className='manageProfile2'>
-                <MDBRow className='uprofileT1'>Manage Your Profile!</MDBRow>
+        <>
+            {localStorage.getItem('role') !== 'user' ? window.location.href = '/' : (
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addAllergy} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Allergy</legend>
-                            <MDBRow>
-                            <MDBCol>
-                            <label className='mprofileText' htmlFor="address">New Allergy Type</label> <br />
-                            <input className='mprofileInput' id="allergy_type" type="text" value={n_AType} onChange={(event) => setAType(event.target.value)} required></input> <br />
+                <MDBContainer className='manageProfile1'>
+
+                    <MDBContainer className='manageProfile2'>
+                        <MDBRow className='uprofileT1'>Manage Your Profile!</MDBRow>
+
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addAllergy} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Allergy</legend>
+                                    <MDBRow>
+                                        <MDBCol>
+                                            <label className='mprofileText' htmlFor="address">New Allergy Type</label> <br />
+                                            <input className='mprofileInput' id="allergy_type" type="text" value={n_AType} onChange={(event) => setAType(event.target.value)} required></input> <br />
+                                        </MDBCol>
+                                        <MDBCol>
+                                            <label className='mprofileText' htmlFor="address">New Allergy Name</label> <br />
+                                            <input className='mprofileInput' id="allergy_name" type="text" value={n_AName} onChange={(event) => setAName(event.target.value)} required></input> <br />
+                                        </MDBCol>
+                                    </MDBRow>
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Allergy</MDBBtn>
+                                </form>
                             </MDBCol>
-                            <MDBCol>
-                            <label className='mprofileText' htmlFor="address">New Allergy Name</label> <br />
-                            <input className='mprofileInput' id="allergy_name" type="text" value={n_AName} onChange={(event) => setAName(event.target.value)} required></input> <br />
+                        </MDBRow>
+
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateAddress} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Address</legend>
+                                    <label className='mprofileText' htmlFor="address">New Address</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={n_address} onChange={(event) => setAddress(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Adress</MDBBtn>
+                                </form>
                             </MDBCol>
-                            </MDBRow>
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Allergy</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateAddress} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Address</legend>
-                            <label className='mprofileText' htmlFor="address">New Address</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={n_address} onChange={(event) => setAddress(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Adress</MDBBtn>
-                        </form>
-                    </MDBCol>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updatePhone} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Phone Number</legend>
+                                    <label className='mprofileText'>New Phone Number</label> <br />
+                                    <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updatePhone} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Phone Number</legend>
-                            <label className='mprofileText'>New Phone Number</label> <br />
-                            <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateEmPerson} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Emergency Contact Person</legend>
+                                    <label className='mprofileText'>New Emergency Contact Person</label> <br />
+                                    <input className='mprofileInput' id="emergency_person" type="text" value={n_emergency_contact_person} onChange={(event) => setEmPerson(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Person</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateEmPerson} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Emergency Contact Person</legend>
-                            <label className='mprofileText'>New Emergency Contact Person</label> <br />
-                            <input className='mprofileInput' id="emergency_person" type="text" value={n_emergency_contact_person} onChange={(event) => setEmPerson(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Person</MDBBtn>
-                        </form>
-                    </MDBCol>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateEmContact} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Emergency Contact Person Phone Number</legend>
+                                    <label className='mprofileText'>New Emergency Contact Number</label> <br />
+                                    <input className='mprofileInput' id="emergency_contact" type="text" value={n_emergency_contact} onChange={(event) => setEmPhone(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Number</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateEmContact} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Emergency Contact Person Phone Number</legend>
-                            <label className='mprofileText'>New Emergency Contact Number</label> <br />
-                            <input className='mprofileInput' id="emergency_contact" type="text" value={n_emergency_contact} onChange={(event) => setEmPhone(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Number</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateBloodGroup} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Blood Group</legend>
+                                    <label className='mprofileText'>New Blood Group</label> <br />
+                                    <input className='mprofileInput' id="blood_group" type="text" value={n_blood_group} onChange={(event) => setBGroup(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Blood Group</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateBloodGroup} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Blood Group</legend>
-                            <label className='mprofileText'>New Blood Group</label> <br />
-                            <input className='mprofileInput' id="blood_group" type="text" value={n_blood_group} onChange={(event) => setBGroup(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Blood Group</MDBBtn>
-                        </form>
-                    </MDBCol>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateCDiseases} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Chronic Diseases</legend>
+                                    <label className='mprofileText'>New Diseases</label> <br />
+                                    <input className='mprofileInput' id="chronic_disease" type="text" value={n_chronic_disease} onChange={(event) => setCDisease(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Diseases</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateCDiseases} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Chronic Diseases</legend>
-                            <label className='mprofileText'>New Diseases</label> <br />
-                            <input className='mprofileInput' id="chronic_disease" type="text" value={n_chronic_disease} onChange={(event) => setCDisease(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Diseases</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={updateInsurance} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Update Health Insurance</legend>
+                                    <label className='mprofileText'>New Health Insurance</label> <br />
+                                    <input className='mprofileInput' id="chronic_disease" type="text" value={n_health_insurance_provider} onChange={(event) => setInsurance(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Diseases</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={updateInsurance} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Update Health Insurance</legend>
-                            <label className='mprofileText'>New Health Insurance</label> <br />
-                            <input className='mprofileInput' id="chronic_disease" type="text" value={n_health_insurance_provider} onChange={(event) => setInsurance(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Diseases</MDBBtn>
-                        </form>
-                    </MDBCol>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={deleteUser} className='mprofileForm'>
+                                    <legend className='mprofileLegendx'>Deactivate Account</legend>
+                                    <label className='mprofileText'>Enter your password</label> <br />
+                                    <input className='mprofileInput' id="n_pass" type="text" value={n_pass} onChange={(event) => setPass(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Deactivate Account</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={deleteUser} className='mprofileForm'>
-                            <legend className='mprofileLegendx'>Deactivate Account</legend>
-                            <label className='mprofileText'>Enter your password</label> <br />
-                            <input className='mprofileInput' id="n_pass" type="text" value={n_pass} onChange={(event) => setPass(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Deactivate Account</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
-
-                {/* <div id='allergySection'>
+                        {/* <div id='allergySection'>
                     <MDBRow className='manageProfileR2'>
                         <MDBCol className='manageProfileC'>
                             <form onSubmit={addAllergy} className='mprofileForm'>
@@ -446,9 +450,12 @@ function ProfileUpdate() {
                     </MDBRow>
                 </div> */}
 
-            </MDBContainer>
+                    </MDBContainer>
 
-        </MDBContainer>
+                </MDBContainer>
+
+            )}</>
+
     )
 }
 

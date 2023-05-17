@@ -75,84 +75,89 @@ function AddVaccine() {
 
 
     return (
-        <MDBContainer className='vaccineCont1'>
+        <>
+            {localStorage.getItem('role') !== 'doctor' ? window.location.href = '/' : (
 
-            <MDBRow className='manageProfileR2'>
-                <MDBCol className='manageProfileC'>
-                    <form onSubmit={getVaccines}>
-                        <label className='mprofileText vacTxt' htmlFor="n_hospital">Insert NIC</label> <br />
-                        <input className='mprofileInput' id="nic" type="text" value={nic} onChange={(event) => setNIC(event.target.value)} required></input>
-                        <MDBBtn type='submit' className='mb-4 mprofileBtn emBtn' block>Find User</MDBBtn>
-                    </form>
-                </MDBCol>
-            </MDBRow>
+                <MDBContainer className='vaccineCont1'>
 
-            <MDBContainer className='vaccineCont2'>
-                <MDBRow className='vaccineRow1'>
-                    <span className='vaccineT1'>
-                        <img src={VaccineImg} alt='...' className='vaccineIcon' />
-                        Vaccinations
-                    </span>
-                </MDBRow>
-            </MDBContainer>
+                    <MDBRow className='manageProfileR2'>
+                        <MDBCol className='manageProfileC'>
+                            <form onSubmit={getVaccines}>
+                                <label className='mprofileText vacTxt' htmlFor="n_hospital">Insert NIC</label> <br />
+                                <input className='mprofileInput' id="nic" type="text" value={nic} onChange={(event) => setNIC(event.target.value)} required></input>
+                                <MDBBtn type='submit' className='mb-4 mprofileBtn emBtn' block>Find User</MDBBtn>
+                            </form>
+                        </MDBCol>
+                    </MDBRow>
 
-            <MDBContainer className='vaccineCont3'>
-                <MDBCol>
-                    <MDBTable striped>
-                        <MDBTableHead dark>
-                            <tr>
-                                <th scope='col'>Vaccination Name</th>
-                                <th scope='col'>Date</th>
-                                <th scope='col'>Dose</th>
-                                <th scope='col'>Batch Number</th>
-                                <th scope='col'>Location</th>
-                            </tr>
-                        </MDBTableHead>
-                        <MDBTableBody>
-                            {vaccines.map((vaccine) => (
-                                <tr key={vaccine._id}>
-                                    <td>{vaccine.vaccine_name}</td>
-                                    <td>{vaccine.date}</td>
-                                    <td>{vaccine.dosage}</td>
-                                    <td>{vaccine.batch_number}</td>
-                                    <td>{vaccine.location}</td>
-                                </tr>
-                            ))}
-                        </MDBTableBody>
-                    </MDBTable>
-                </MDBCol>
-
-                <MDBRow className='manageProfileR2'>
-                    <form onSubmit={addVaccine} className='mprofileForm addVaForm'>
-                        <legend className='mprofileLegend'>Add Vaccine</legend>
-                        <MDBRow>
-                            <MDBCol>
-                                <label className='mprofileText' htmlFor="address">Vaccine Name</label> <br />
-                                <input className='mprofileInput' id="address" type="text" value={vaccine_name} onChange={(event) => setVaccineName(event.target.value)} required></input>
-                            </MDBCol>
-                            <MDBCol>
-                                <label className='mprofileText' htmlFor="address">Date</label> <br />
-                                <input className='mprofileInput' id="address" type="text" value={date} onChange={(event) => setDate(event.target.value)} required></input>
-                            </MDBCol>
+                    <MDBContainer className='vaccineCont2'>
+                        <MDBRow className='vaccineRow1'>
+                            <span className='vaccineT1'>
+                                <img src={VaccineImg} alt='...' className='vaccineIcon' />
+                                Vaccinations
+                            </span>
                         </MDBRow>
-                        <MDBRow>
-                            <MDBCol>
-                                <label className='mprofileText' htmlFor="address">Dosage</label> <br />
-                                <input className='mprofileInput' id="address" type="text" value={dosage} onChange={(event) => setDosage(event.target.value)} required></input>
-                            </MDBCol>
-                            <MDBCol>
-                                <label className='mprofileText' htmlFor="address">Batch Number</label> <br />
-                                <input className='mprofileInput' id="address" type="text" value={batch_number} onChange={(event) => setBatchNo(event.target.value)} required></input>
-                            </MDBCol>
-                        </MDBRow>
-                        <label className='mprofileText' htmlFor="address">Location</label> <br />
-                        <input className='mprofileInput' id="address" type="text" value={location} onChange={(event) => setLocation(event.target.value)} required></input> <br />
-                        <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Vaccination</MDBBtn>
-                    </form>
-                </MDBRow>
+                    </MDBContainer>
 
-            </MDBContainer>
-        </MDBContainer>
+                    <MDBContainer className='vaccineCont3'>
+                        <MDBCol>
+                            <MDBTable striped>
+                                <MDBTableHead dark>
+                                    <tr>
+                                        <th scope='col'>Vaccination Name</th>
+                                        <th scope='col'>Date</th>
+                                        <th scope='col'>Dose</th>
+                                        <th scope='col'>Batch Number</th>
+                                        <th scope='col'>Location</th>
+                                    </tr>
+                                </MDBTableHead>
+                                <MDBTableBody>
+                                    {vaccines.map((vaccine) => (
+                                        <tr key={vaccine._id}>
+                                            <td>{vaccine.vaccine_name}</td>
+                                            <td>{vaccine.date}</td>
+                                            <td>{vaccine.dosage}</td>
+                                            <td>{vaccine.batch_number}</td>
+                                            <td>{vaccine.location}</td>
+                                        </tr>
+                                    ))}
+                                </MDBTableBody>
+                            </MDBTable>
+                        </MDBCol>
+
+                        <MDBRow className='manageProfileR2'>
+                            <form onSubmit={addVaccine} className='mprofileForm addVaForm'>
+                                <legend className='mprofileLegend'>Add Vaccine</legend>
+                                <MDBRow>
+                                    <MDBCol>
+                                        <label className='mprofileText' htmlFor="address">Vaccine Name</label> <br />
+                                        <input className='mprofileInput' id="address" type="text" value={vaccine_name} onChange={(event) => setVaccineName(event.target.value)} required></input>
+                                    </MDBCol>
+                                    <MDBCol>
+                                        <label className='mprofileText' htmlFor="address">Date</label> <br />
+                                        <input className='mprofileInput' id="address" type="text" value={date} onChange={(event) => setDate(event.target.value)} required></input>
+                                    </MDBCol>
+                                </MDBRow>
+                                <MDBRow>
+                                    <MDBCol>
+                                        <label className='mprofileText' htmlFor="address">Dosage</label> <br />
+                                        <input className='mprofileInput' id="address" type="text" value={dosage} onChange={(event) => setDosage(event.target.value)} required></input>
+                                    </MDBCol>
+                                    <MDBCol>
+                                        <label className='mprofileText' htmlFor="address">Batch Number</label> <br />
+                                        <input className='mprofileInput' id="address" type="text" value={batch_number} onChange={(event) => setBatchNo(event.target.value)} required></input>
+                                    </MDBCol>
+                                </MDBRow>
+                                <label className='mprofileText' htmlFor="address">Location</label> <br />
+                                <input className='mprofileInput' id="address" type="text" value={location} onChange={(event) => setLocation(event.target.value)} required></input> <br />
+                                <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Vaccination</MDBBtn>
+                            </form>
+                        </MDBRow>
+
+                    </MDBContainer>
+                </MDBContainer>
+
+            )}</>
     )
 }
 

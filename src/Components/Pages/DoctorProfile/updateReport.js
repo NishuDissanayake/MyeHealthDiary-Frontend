@@ -241,96 +241,103 @@ function UpdateReport() {
         }
     };
 
-  return (
-    <MDBContainer className='manageProfile1'>
+    return (
 
-            <MDBContainer className='manageProfile2'>
-                <MDBRow className='uprofileT1'>Make Report Updates!</MDBRow>
+        <>
+            {localStorage.getItem('role') !== 'doctor' ? window.location.href = '/' : (
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addTreatment} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Treatment</legend>
-                            <label className='mprofileText' htmlFor="address">New Treatment</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={treatment} onChange={(event) => setTreatment(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Treatment</MDBBtn>
-                        </form>
-                    </MDBCol>
+                <MDBContainer className='manageProfile1'>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addBandB} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Bladder and Bowl Function</legend>
-                            <label className='mprofileText' htmlFor="address">New Bladder and Bowel Function</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={bandb} onChange={(event) => setBandB(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Bladder and Bowel Function</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
+                    <MDBContainer className='manageProfile2'>
+                        <MDBRow className='uprofileT1'>Make Report Updates!</MDBRow>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addLabTest} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Lab Test</legend>
-                            <label className='mprofileText' htmlFor="address">Lab Test</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={tname} onChange={(event) => setTName(event.target.value)} required></input> <br />
-                            <label className='mprofileText' htmlFor="address">Test Comments</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={tcomments} onChange={(event) => setTComments(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Lab Test</MDBBtn>
-                        </form>
-                    </MDBCol>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addTreatment} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Treatment</legend>
+                                    <label className='mprofileText' htmlFor="address">New Treatment</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={treatment} onChange={(event) => setTreatment(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Treatment</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addTemperature} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Temperature</legend>
-                            <label className='mprofileText' htmlFor="address">New Temperature</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={temp} onChange={(event) => setTemp(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Temperature</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addBandB} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Bladder and Bowl Function</legend>
+                                    <label className='mprofileText' htmlFor="address">New Bladder and Bowel Function</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={bandb} onChange={(event) => setBandB(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Bladder and Bowel Function</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addBP} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Blood Pressure</legend>
-                            <label className='mprofileText' htmlFor="address">New Blood Pressure</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={bp} onChange={(event) => setBp(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Blood Pressure</MDBBtn>
-                        </form>
-                    </MDBCol>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addLabTest} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Lab Test</legend>
+                                    <label className='mprofileText' htmlFor="address">Lab Test</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={tname} onChange={(event) => setTName(event.target.value)} required></input> <br />
+                                    <label className='mprofileText' htmlFor="address">Test Comments</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={tcomments} onChange={(event) => setTComments(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Lab Test</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addComment} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Comment</legend>
-                            <label className='mprofileText' htmlFor="address">New Comment</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={com} onChange={(event) => setCom(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Comment</MDBBtn>
-                        </form>
-                    </MDBCol>
-                </MDBRow>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addTemperature} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Temperature</legend>
+                                    <label className='mprofileText' htmlFor="address">New Temperature</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={temp} onChange={(event) => setTemp(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Temperature</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-                <MDBRow className='manageProfileR2'>
-                    <MDBCol className='manageProfileC'>
-                        <form onSubmit={addLabReport} className='mprofileForm'>
-                            <legend className='mprofileLegend'>Add Lab Report</legend>
-                            <label className='mprofileText' htmlFor="address">Report Name</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={rname} onChange={(event) => setRName(event.target.value)} required></input> <br />
-                            <label className='mprofileText' htmlFor="address">Report Type</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={rtype} onChange={(event) => setRType(event.target.value)} required></input> <br />
-                            <label className='mprofileText' htmlFor="address">Report Link</label> <br />
-                            <input className='mprofileInput' id="address" type="text" value={rlink} onChange={(event) => setRLink(event.target.value)} required></input> <br />
-                            <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Lab Report</MDBBtn>
-                        </form>
-                    </MDBCol>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addBP} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Blood Pressure</legend>
+                                    <label className='mprofileText' htmlFor="address">New Blood Pressure</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={bp} onChange={(event) => setBp(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Blood Pressure</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-                    <MDBCol className='manageProfileC'>
-                    </MDBCol>
-                </MDBRow>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addComment} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Comment</legend>
+                                    <label className='mprofileText' htmlFor="address">New Comment</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={com} onChange={(event) => setCom(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Comment</MDBBtn>
+                                </form>
+                            </MDBCol>
+                        </MDBRow>
 
-            </MDBContainer>
+                        <MDBRow className='manageProfileR2'>
+                            <MDBCol className='manageProfileC'>
+                                <form onSubmit={addLabReport} className='mprofileForm'>
+                                    <legend className='mprofileLegend'>Add Lab Report</legend>
+                                    <label className='mprofileText' htmlFor="address">Report Name</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={rname} onChange={(event) => setRName(event.target.value)} required></input> <br />
+                                    <label className='mprofileText' htmlFor="address">Report Type</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={rtype} onChange={(event) => setRType(event.target.value)} required></input> <br />
+                                    <label className='mprofileText' htmlFor="address">Report Link</label> <br />
+                                    <input className='mprofileInput' id="address" type="text" value={rlink} onChange={(event) => setRLink(event.target.value)} required></input> <br />
+                                    <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Add Lab Report</MDBBtn>
+                                </form>
+                            </MDBCol>
 
-        </MDBContainer>
-  )
+                            <MDBCol className='manageProfileC'>
+                            </MDBCol>
+                        </MDBRow>
+
+                    </MDBContainer>
+
+                </MDBContainer>
+
+            )}</>
+
+    )
 }
 
 export default UpdateReport

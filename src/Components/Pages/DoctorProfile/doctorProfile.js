@@ -168,97 +168,104 @@ function DoctorProfile() {
   };
 
   return (
-    <MDBContainer>
-      <MDBContainer className='uprofileCont2'>
-        <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
 
-        <MDBRow className='uprofileTbl1'>
-          <MDBTable striped>
-            <MDBTableHead dark>
-              <tr>
-                <th scope='col'>Doctor Information</th>
-                <th><Link to="/find-user-record">
-                  <MDBBtn className='profBtnL'>Find User</MDBBtn>
-                </Link>
-                </th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              <tr>
-                <th scope='row'>Name</th>
-                <td>{userData && userData.length ? userData[0].doctor_name : '-'}</td>
-              </tr>
-              <tr>
-                <th scope='row'>Hospital</th>
-                <td>{userData && userData.length ? userData[0].hospital : '-'}</td>
-              </tr>
-              <tr>
-                <th scope='row'>Specialization</th>
-                <td>{userData && userData.length ? userData[0].specialization : '-'}</td>
-              </tr>
-              <tr>
-                <th scope='row'>Qualifications</th>
-                <td>{userData && userData.length ? userData[0].qualifications : '-'}</td>
-              </tr>
-              <tr>
-                <th scope='row'>Phone Number</th>
-                <td>{userData && userData.length ? userData[0].phone_number : '-'}</td>
-              </tr>
-              <tr>
-                <th scope='row'>Email</th>
-                <td>{userData && userData.length ? userData[0].email : '-'}</td>
-              </tr>
-            </MDBTableBody>
-          </MDBTable>
-        </MDBRow>
-      </MDBContainer>
+    <>
+      {localStorage.getItem('role') !== 'doctor' ? window.location.href = '/' : (
 
-      <MDBContainer>
-        <MDBRow className='uprofileT1x'>Manage Your Profile!</MDBRow>
+        <MDBContainer>
+          <MDBContainer className='uprofileCont2'>
+            <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
 
-        <MDBRow className='manageProfileR2'>
-          <MDBCol className='manageProfileC'>
-            <form onSubmit={updateHospital} className='mprofileForm'>
-              <legend className='mprofileLegend'>Update Hospital</legend>
-              <label className='mprofileText' htmlFor="n_hospital">New Hospital</label> <br />
-              <input className='mprofileInput' id="n_hospital" type="text" value={n_hospital} onChange={(event) => setHospital(event.target.value)} required></input> <br />
-              <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Hospital</MDBBtn>
-            </form>
-          </MDBCol>
+            <MDBRow className='uprofileTbl1'>
+              <MDBTable striped>
+                <MDBTableHead dark>
+                  <tr>
+                    <th scope='col'>Doctor Information</th>
+                    <th><Link to="/find-user-record">
+                      <MDBBtn className='profBtnL'>Find User</MDBBtn>
+                    </Link>
+                    </th>
+                  </tr>
+                </MDBTableHead>
+                <MDBTableBody>
+                  <tr>
+                    <th scope='row'>Name</th>
+                    <td>{userData && userData.length ? userData[0].doctor_name : '-'}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Hospital</th>
+                    <td>{userData && userData.length ? userData[0].hospital : '-'}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Specialization</th>
+                    <td>{userData && userData.length ? userData[0].specialization : '-'}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Qualifications</th>
+                    <td>{userData && userData.length ? userData[0].qualifications : '-'}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Phone Number</th>
+                    <td>{userData && userData.length ? userData[0].phone_number : '-'}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Email</th>
+                    <td>{userData && userData.length ? userData[0].email : '-'}</td>
+                  </tr>
+                </MDBTableBody>
+              </MDBTable>
+            </MDBRow>
+          </MDBContainer>
 
-          <MDBCol className='manageProfileC'>
-            <form onSubmit={updatePhone} className='mprofileForm'>
-              <legend className='mprofileLegend'>Update Phone Number</legend>
-              <label className='mprofileText'>New Phone Number</label> <br />
-              <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
-              <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
-            </form>
-          </MDBCol>
-        </MDBRow>
+          <MDBContainer>
+            <MDBRow className='uprofileT1x'>Manage Your Profile!</MDBRow>
 
-        <MDBRow className='manageProfileR2'>
-          <MDBCol className='manageProfileC'>
-            <form onSubmit={updateQualifications} className='mprofileForm'>
-              <legend className='mprofileLegend'>Update Qualifications</legend>
-              <label className='mprofileText' htmlFor="designation">New Qualifications</label> <br />
-              <input className='mprofileInput' id="qualifications" type="text" value={n_qualifications} onChange={(event) => setQualifications(event.target.value)} required></input> <br />
-              <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Qualifications</MDBBtn>
-            </form>
-          </MDBCol>
+            <MDBRow className='manageProfileR2'>
+              <MDBCol className='manageProfileC'>
+                <form onSubmit={updateHospital} className='mprofileForm'>
+                  <legend className='mprofileLegend'>Update Hospital</legend>
+                  <label className='mprofileText' htmlFor="n_hospital">New Hospital</label> <br />
+                  <input className='mprofileInput' id="n_hospital" type="text" value={n_hospital} onChange={(event) => setHospital(event.target.value)} required></input> <br />
+                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Hospital</MDBBtn>
+                </form>
+              </MDBCol>
 
-          <MDBCol className='manageProfileC'>
-            <form onSubmit={deleteUser} className='mprofileForm'>
-              <legend className='mprofileLegendx'>Deactivate Account</legend>
-              <label className='mprofileText'>Enter your password</label> <br />
-              <input className='mprofileInput' id="n_pass" type="text" value={n_pass} onChange={(event) => setPass(event.target.value)} required></input> <br />
-              <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Deactivate Account</MDBBtn>
-            </form>
-          </MDBCol>
-        </MDBRow>
+              <MDBCol className='manageProfileC'>
+                <form onSubmit={updatePhone} className='mprofileForm'>
+                  <legend className='mprofileLegend'>Update Phone Number</legend>
+                  <label className='mprofileText'>New Phone Number</label> <br />
+                  <input className='mprofileInput' id="phone_number" type="text" value={n_phone} onChange={(event) => setPhone(event.target.value)} required></input> <br />
+                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Phone Number</MDBBtn>
+                </form>
+              </MDBCol>
+            </MDBRow>
 
-      </MDBContainer>
+            <MDBRow className='manageProfileR2'>
+              <MDBCol className='manageProfileC'>
+                <form onSubmit={updateQualifications} className='mprofileForm'>
+                  <legend className='mprofileLegend'>Update Qualifications</legend>
+                  <label className='mprofileText' htmlFor="designation">New Qualifications</label> <br />
+                  <input className='mprofileInput' id="qualifications" type="text" value={n_qualifications} onChange={(event) => setQualifications(event.target.value)} required></input> <br />
+                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Qualifications</MDBBtn>
+                </form>
+              </MDBCol>
 
-    </MDBContainer>
+              <MDBCol className='manageProfileC'>
+                <form onSubmit={deleteUser} className='mprofileForm'>
+                  <legend className='mprofileLegendx'>Deactivate Account</legend>
+                  <label className='mprofileText'>Enter your password</label> <br />
+                  <input className='mprofileInput' id="n_pass" type="text" value={n_pass} onChange={(event) => setPass(event.target.value)} required></input> <br />
+                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Deactivate Account</MDBBtn>
+                </form>
+              </MDBCol>
+            </MDBRow>
+
+          </MDBContainer>
+
+        </MDBContainer>
+
+      )}</>
+
   )
 }
 
