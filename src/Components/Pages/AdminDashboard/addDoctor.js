@@ -19,7 +19,7 @@ function AddDoctor() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const added_by = "U00T";
+            const added_by = localStorage.getItem('email');
 
             const res = await axios.post("https://my-ehealth-diary-backend.herokuapp.com/api/add-doctor", { doctor_id, doctor_name, hospital, specialization, qualifications, phone_number, email, added_by, pass });
             console.log(res.data);

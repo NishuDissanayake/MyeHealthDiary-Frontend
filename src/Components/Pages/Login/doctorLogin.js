@@ -23,7 +23,7 @@ export default function Login() {
     event.preventDefault();
     try {
 
-        const res = await axios.post(`http://localhost:5000/api/login?email=` + email + `&pass=` + pass);
+        const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/doctor-login?email=` + email + `&pass=` + pass);
         console.log(res.data);
 
         setEmail("");

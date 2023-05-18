@@ -17,7 +17,7 @@ function Userprofile() {
   }, []);
 
   const getUserData = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-users?nic=${nic}`);
       const dataArray = response.data;
@@ -45,7 +45,7 @@ function Userprofile() {
   }, []);
 
   const getAllergyData = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-allergies?nic=${nic}`);
       const allergyArray = response.data.allergies;
@@ -70,7 +70,7 @@ function Userprofile() {
         <MDBContainer>
 
           <MDBContainer className='uprofileCont2'>
-            <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+            <MDBRow className='uprofileT1'>Welcome Back, {localStorage.getItem('fname')}</MDBRow>
 
             <MDBRow className='uprofileTbl1'>
               <MDBTable striped>

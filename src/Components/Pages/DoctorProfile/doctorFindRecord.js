@@ -37,7 +37,6 @@ function DoctorFindRecord() {
   };
 
   const getMedicines = async () => {
-    const nic = '200055702644';
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-active-meds?nic=${nic}`);
       const medicinesArray = response.data.currentMeds;

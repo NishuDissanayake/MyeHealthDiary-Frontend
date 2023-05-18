@@ -30,7 +30,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-address?nic=" + nic + "&n_address=" + n_address);
             console.log(res.data);
@@ -61,7 +61,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-contact?nic=" + nic + "&n_phone=" + n_phone);
             console.log(res.data);
@@ -92,7 +92,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-em-contact-name?nic=" + nic + "&n_emergency_contact_person=" + n_emergency_contact_person);
             console.log(res.data);
@@ -125,7 +125,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-em-contact?nic=" + nic + "&n_emergency_contact=" + n_emergency_contact);
             console.log(res.data);
@@ -158,7 +158,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-blood-group?nic=" + nic + "&n_blood_group=" + n_blood_group);
             console.log(res.data);
@@ -191,7 +191,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-chronic-diseases?nic=" + nic + "&n_chronic_disease=" + n_chronic_disease);
             console.log(res.data);
@@ -224,7 +224,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-health-insurance?nic=" + nic + "&n_health_insurance_provider=" + n_health_insurance_provider);
             console.log(res.data);
@@ -257,7 +257,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
 
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/add-allergy?nic=" + nic + "&allergy_type=" + n_AType + "&allergy_name=" + n_AName);
             console.log(res.data);
@@ -291,7 +291,7 @@ function ProfileUpdate() {
         event.preventDefault();
 
         try {
-            const nic = '200055702644';
+            const nic = localStorage.getItem('nic');
             const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-user?nic=" + nic + "&n_pass=" + n_pass);
             console.log(res.data);
 

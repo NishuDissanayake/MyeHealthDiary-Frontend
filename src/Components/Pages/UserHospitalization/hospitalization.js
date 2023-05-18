@@ -24,7 +24,7 @@ function Hospitalization() {
   }, []);
 
   const getRecords = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-medical-record?nic=` + + nic + `&_id=` + id);
       const reportsArray = response.data.medicalRecord;
@@ -45,7 +45,7 @@ function Hospitalization() {
   }, []);
 
   const getTreatments = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-treatments?nic=` + + nic + `&_id=` + id);
       const treatsArray = response.data.treatments;
@@ -66,7 +66,7 @@ function Hospitalization() {
   }, []);
 
   const getBandB = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-bandb?nic=` + nic + `&_id=` + id);
       const bbArray = response.data.bandb;
@@ -88,7 +88,7 @@ function Hospitalization() {
   }, []);
 
   const getLabTests = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-labtests?nic=` + + nic + `&_id=` + id);
       const ltestArray = response.data.labs;
@@ -110,7 +110,7 @@ function Hospitalization() {
   }, []);
 
   const getTemperature = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-temperatures?nic=` + + nic + `&_id=` + id);
       const tempArray = response.data.temps;
@@ -132,7 +132,7 @@ function Hospitalization() {
   }, []);
 
   const getBloodPressure = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-blood-pressures?nic=` + + nic + `&_id=` + id);
       const bpArray = response.data.bp;
@@ -153,7 +153,7 @@ function Hospitalization() {
   }, []);
 
   const getComments = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-comments?nic=` + + nic + `&_id=` + id);
       const commentsArray = response.data.com;
@@ -175,7 +175,7 @@ function Hospitalization() {
   }, []);
 
   const getLabReports = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-reports?nic=` + + nic + `&_id=` + id);
       const lreportsArray = response.data.report;

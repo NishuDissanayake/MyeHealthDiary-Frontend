@@ -130,6 +130,16 @@ export default function Navbar() {
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                         )}
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='https://www.blog.myehealthdiary.me/'>
+                                Blog
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='https://forum.myehealthdiary.me/'>
+                                Forum
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
                         {localStorage.getItem('role') === 'user' || localStorage.getItem('role') === 'admin' || localStorage.getItem('role') === 'emt' || localStorage.getItem('role') === 'doctor' ? (
                             <MDBNavbarItem>
                                 <MDBNavbarLink className='navTextCol' tag={Link} onClick={logout}>
@@ -137,7 +147,6 @@ export default function Navbar() {
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                         ) : null}
-
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBContainer>

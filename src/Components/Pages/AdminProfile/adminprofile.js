@@ -14,7 +14,7 @@ function Adminprofile() {
   }, []);
 
   const getUserData = async () => {
-    const email = 'nishu@gmail.com';
+    const email = localStorage.getItem('email');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-admin-by-email?email=${email}`);
       const dataArray = response.data;
@@ -44,7 +44,7 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = localStorage.getItem('userId');
 
       const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-org?_id=" + _id + "&n_organization=" + n_organization);
 
@@ -76,7 +76,7 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = localStorage.getItem('userId');
 
       const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-phone?_id=" + _id + "&n_phone=" + n_phone);
       console.log(res.data);
@@ -109,7 +109,7 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = localStorage.getItem('userId');
 
       const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-designation?_id=" + _id + "&n_designation=" + n_designation);
       console.log(res.data);
@@ -142,7 +142,7 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = localStorage.getItem('userId');
       const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-admin-acc?_id=" + _id + "&n_pass=" + n_pass);
       console.log(res.data);
 
@@ -173,7 +173,7 @@ function Adminprofile() {
 
         <MDBContainer>
           <MDBContainer className='uprofileCont2'>
-            <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+            <MDBRow className='uprofileT1'>Welcome Back, {localStorage.getItem('name')}</MDBRow>
 
             <MDBRow className='uprofileTbl1'>
               <MDBTable striped>

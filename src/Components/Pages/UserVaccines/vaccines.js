@@ -15,7 +15,7 @@ function Vaccines() {
   }, []);
 
   const getVaccines = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-vaccines?nic=${nic}`);
       const vaccineArray = response.data.vaccinations;
