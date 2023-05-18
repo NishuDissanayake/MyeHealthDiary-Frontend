@@ -1,0 +1,40 @@
+.addVacBtn {
+    float: inline-end;
+    margin-bottom: 30px;
+}
+
+.vacTxt {
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.addVaForm {
+    padding-top: 100px !important;
+    padding-left: 150px !important;
+    margin-top: 50px !important;
+}
+
+.uFindD {
+    color: #313357 !important;
+}
+
+.dFindUserTables {
+    margin-bottom: 50px !important;
+}
+
+.dFindUserTxt {
+    color: #313357;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.duprecspan {
+    padding-top: 40px !important;
+    padding-right: 50px;
+}
+
+.up-link-rec {
+    padding-top: 70px !important;
+    margin-left: 20px;
+}

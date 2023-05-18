@@ -12,10 +12,9 @@ import {
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { decodeToken } from '../../../Utils/tokenDecode';
-import { Link } from 'react-router-dom';
+
 
 export default function Login() {
-
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
@@ -24,8 +23,8 @@ export default function Login() {
     event.preventDefault();
     try {
 
-      const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/login?email=` + email + `&pass=` + pass);
-      console.log(res.data.token);
+      const res = await axios.post(`http://localhost:5000/api/login?email=` + email + `&pwrd=` + pass);
+      console.log(res.data);
 
       setEmail("");
       setPass("");
@@ -38,27 +37,23 @@ export default function Login() {
 
       const decoded_token = decodeToken(res.data.token);
       if (decoded_token) {
-        const { userId, role, email, nic, fname, lname } = decoded_token;
+        const { userId, role, name, email } = decoded_token;
 
         // Use the userRole, email, and name as needed
         console.log('User ID:', userId);
         console.log('Role:', role);
+        console.log('Name:', name);
         console.log('Email:', email);
-        console.log('NIC:', nic);
-        console.log('First Name:', fname);
-        console.log('Last Name:', lname);
 
 
         localStorage.setItem('role', role);
-        localStorage.setItem('fname', fname);
-        localStorage.setItem('lname', lname);
+        localStorage.setItem('name', name);
         localStorage.setItem('email', email);
-        localStorage.setItem('nic', nic);
       }
 
       localStorage.setItem('token', res.data.token);
 
-      window.location.href = '/home';
+      window.location.href = '/admin-dashboard';
 
     } catch (error) {
       console.log(error);
@@ -87,15 +82,6 @@ export default function Login() {
             </MDBRow>
             <MDBRow>
               <MDBBtn type='submit' className='mb-4 btnLogin' block>Login</MDBBtn>
-            </MDBRow>
-            <MDBRow>
-              <div className='text-center'>
-                <p>
-                  Don't have an account? <span className='signupBText'><Link to="/register">
-                    Sign Up
-                  </Link></span>
-                </p>
-              </div>
             </MDBRow>
           </MDBRow>
         </MDBCol>

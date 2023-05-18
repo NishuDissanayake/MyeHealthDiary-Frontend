@@ -1,11 +1,11 @@
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import './adminprofile.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import './doctor.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
-function Adminprofile() {
+function DoctorProfile() {
 
   const [userData, setUserData] = useState([]);
 
@@ -14,9 +14,9 @@ function Adminprofile() {
   }, []);
 
   const getUserData = async () => {
-    const email = 'nishu@gmail.com';
+    const email = 'rasikapTest@gmail.com';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-admin-by-email?email=${email}`);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-doctor-by-email?email=${email}`);
       const dataArray = response.data;
       console.log(response);
       setUserData(dataArray);
@@ -31,28 +31,29 @@ function Adminprofile() {
     }
   };
 
-  const [n_organization, setOrganization] = useState('');
+  const [n_hospital, setHospital] = useState('');
   const [n_phone, setPhone] = useState('');
-  const [n_designation, setDesignation] = useState('');
+  const [n_qualifications, setQualifications] = useState('');
   const [n_pass, setPass] = useState('');
 
   useEffect(() => {
-    updateOrg();
+    updateHospital();
   }, [])
 
-  const updateOrg = async (event) => {
+  const updateHospital = async (event) => {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = '64257b8752453202c6958d03';
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-org?_id=" + _id + "&n_organization=" + n_organization);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-hospital?_id=" + _id + "&n_hospital=" + n_hospital);
 
-      setOrganization("");
+      setHospital("");
+      console.log(n_hospital);
 
       Swal.fire({
         title: 'Success!',
-        text: 'Orgnization updated successfully!',
+        text: 'Hospital updated successfully!',
         icon: 'success',
         confirmButtonText: 'OK'
       });
@@ -61,7 +62,7 @@ function Adminprofile() {
       console.log(error);
       Swal.fire({
         title: 'Error!',
-        text: 'Organization update failed!',
+        text: 'Hospital update failed!',
         icon: 'error',
         confirmButtonText: 'OK'
       });
@@ -76,9 +77,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = '64257b8752453202c6958d03';
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-phone?_id=" + _id + "&n_phone=" + n_phone);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-phone?_id=" + _id + "&n_phone=" + n_phone);
       console.log(res.data);
 
       setPhone("");
@@ -102,23 +103,23 @@ function Adminprofile() {
   };
 
   useEffect(() => {
-    updateDesignation();
+    updateQualifications();
   }, [])
 
-  const updateDesignation = async (event) => {
+  const updateQualifications = async (event) => {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const _id = '64257b8752453202c6958d03';
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-designation?_id=" + _id + "&n_designation=" + n_designation);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-qualifications?_id=" + _id + "&n_qualifications=" + n_qualifications);
       console.log(res.data);
 
-      setDesignation("");
+      setQualifications("");
 
       Swal.fire({
         title: 'Success!',
-        text: 'Designation updated successfully!',
+        text: 'Qualifications updated successfully!',
         icon: 'success',
         confirmButtonText: 'OK'
       });
@@ -142,8 +143,8 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-admin-acc?_id=" + _id + "&n_pass=" + n_pass);
+      const _id = '64257b8752453202c6958d03';
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-doctor?_id=" + _id + "&n_pass=" + n_pass);
       console.log(res.data);
 
       setPass("");
@@ -169,7 +170,7 @@ function Adminprofile() {
   return (
 
     <>
-      {localStorage.getItem('role') !== 'admin' ? window.location.href = '/' : (
+      {localStorage.getItem('role') !== 'doctor' ? window.location.href = '/' : (
 
         <MDBContainer>
           <MDBContainer className='uprofileCont2'>
@@ -179,26 +180,29 @@ function Adminprofile() {
               <MDBTable striped>
                 <MDBTableHead dark>
                   <tr>
-                    <th scope='col'>Admin Member Information</th>
-                    <th>
-                      <Link to="/admin-dashboard">
-                        <MDBBtn className='profBtnL'>View Dashboard</MDBBtn>
-                      </Link>
+                    <th scope='col'>Doctor Information</th>
+                    <th><Link to="/find-user-record">
+                      <MDBBtn className='profBtnL'>Find User</MDBBtn>
+                    </Link>
                     </th>
                   </tr>
                 </MDBTableHead>
                 <MDBTableBody>
                   <tr>
                     <th scope='row'>Name</th>
-                    <td>{userData && userData.length ? userData[0].admin_name : '-'}</td>
+                    <td>{userData && userData.length ? userData[0].doctor_name : '-'}</td>
                   </tr>
                   <tr>
-                    <th scope='row'>Designation</th>
-                    <td>{userData && userData.length ? userData[0].designation : '-'}</td>
+                    <th scope='row'>Hospital</th>
+                    <td>{userData && userData.length ? userData[0].hospital : '-'}</td>
                   </tr>
                   <tr>
-                    <th scope='row'>Organization</th>
-                    <td>{userData && userData.length ? userData[0].organization : '-'}</td>
+                    <th scope='row'>Specialization</th>
+                    <td>{userData && userData.length ? userData[0].specialization : '-'}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Qualifications</th>
+                    <td>{userData && userData.length ? userData[0].qualifications : '-'}</td>
                   </tr>
                   <tr>
                     <th scope='row'>Phone Number</th>
@@ -218,11 +222,11 @@ function Adminprofile() {
 
             <MDBRow className='manageProfileR2'>
               <MDBCol className='manageProfileC'>
-                <form onSubmit={updateOrg} className='mprofileForm'>
-                  <legend className='mprofileLegend'>Update Organization</legend>
-                  <label className='mprofileText' htmlFor="n_hospital">New Organization</label> <br />
-                  <input className='mprofileInput' id="n_hospital" type="text" value={n_organization} onChange={(event) => setOrganization(event.target.value)} required></input> <br />
-                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Organization</MDBBtn>
+                <form onSubmit={updateHospital} className='mprofileForm'>
+                  <legend className='mprofileLegend'>Update Hospital</legend>
+                  <label className='mprofileText' htmlFor="n_hospital">New Hospital</label> <br />
+                  <input className='mprofileInput' id="n_hospital" type="text" value={n_hospital} onChange={(event) => setHospital(event.target.value)} required></input> <br />
+                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Hospital</MDBBtn>
                 </form>
               </MDBCol>
 
@@ -238,11 +242,11 @@ function Adminprofile() {
 
             <MDBRow className='manageProfileR2'>
               <MDBCol className='manageProfileC'>
-                <form onSubmit={updateDesignation} className='mprofileForm'>
-                  <legend className='mprofileLegend'>Update Designation</legend>
-                  <label className='mprofileText' htmlFor="designation">New Designation</label> <br />
-                  <input className='mprofileInput' id="designation" type="text" value={n_designation} onChange={(event) => setDesignation(event.target.value)} required></input> <br />
-                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Designation</MDBBtn>
+                <form onSubmit={updateQualifications} className='mprofileForm'>
+                  <legend className='mprofileLegend'>Update Qualifications</legend>
+                  <label className='mprofileText' htmlFor="designation">New Qualifications</label> <br />
+                  <input className='mprofileInput' id="qualifications" type="text" value={n_qualifications} onChange={(event) => setQualifications(event.target.value)} required></input> <br />
+                  <MDBBtn type='submit' className='mb-4 mprofileBtn' block>Update Qualifications</MDBBtn>
                 </form>
               </MDBCol>
 
@@ -265,4 +269,4 @@ function Adminprofile() {
   )
 }
 
-export default Adminprofile
+export default DoctorProfile

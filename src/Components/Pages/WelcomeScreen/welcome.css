@@ -85,3 +85,20 @@
 .welcomeNo1:hover {
     background-color: #313357;
 }
+
+.welcomeTX {
+    color: #313357;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.row3wel {
+    border: none !important;
+    padding-left:  0 !important;
+    padding-bottom: 30px !important;
+}
+
+.twitEmbed {
+    padding-top: 30px !important;
+    padding-left: -0 !important;
+}

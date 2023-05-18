@@ -15,9 +15,10 @@ function Records() {
   }, []);
 
   const getRecords = async () => {
-    const nic = '200055702644';
+    const nic = localStorage.getItem('nic');
+    console.log(nic);
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-user-data?nic=` +  + nic);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-user-data?nic=` + + nic);
       const reportsArray = response.data[0].medical_reports;
       setRecords(reportsArray);
     } catch (error) {
@@ -32,38 +33,45 @@ function Records() {
   };
 
   return (
-    <MDBContainer breakpoint='sm md lg xl xxl main-cont'>
-      <MDBContainer className='recordsCont1'>
-        <MDBRow className='recordsT1'>Let’s go through your recent medical records...</MDBRow>
-      </MDBContainer>
 
-      <MDBContainer className='reportTable'>
-        <MDBTable striped>
-          <MDBTableHead dark>
-            <tr>
-              <th scope='col'>Date</th>
-              <th scope='col'>Type</th>
-              <th scope='col'>Diagnosis</th>
-              <th></th>
-            </tr>
-          </MDBTableHead>
-          <MDBTableBody>
-            {records.map((record) => (
-              <tr key={record._id}>
-                <td>{record.date}</td>
-                <td>{record.type}</td>
-                <td>{record.primary_diagnosis}</td>
-                <td>
-                  <Link to={`/hospitalization-record/${record._id}`}>
-                    <MDBBtn className='reportBtn'>View Full Report</MDBBtn>
-                  </Link></td>
-              </tr>
-            ))}
-          </MDBTableBody>
-        </MDBTable>
-      </MDBContainer>
+    <>
+      {localStorage.getItem('role') !== 'user' ? window.location.href = '/' : (
 
-    </MDBContainer>
+        <MDBContainer breakpoint='sm md lg xl xxl main-cont'>
+          <MDBContainer className='recordsCont1'>
+            <MDBRow className='recordsT1'>Let’s go through your recent medical records...</MDBRow>
+          </MDBContainer>
+
+          <MDBContainer className='reportTable'>
+            <MDBTable striped>
+              <MDBTableHead dark>
+                <tr>
+                  <th scope='col'>Date</th>
+                  <th scope='col'>Type</th>
+                  <th scope='col'>Diagnosis</th>
+                  <th></th>
+                </tr>
+              </MDBTableHead>
+              <MDBTableBody>
+                {records.map((record) => (
+                  <tr key={record._id}>
+                    <td>{record.date}</td>
+                    <td>{record.type}</td>
+                    <td>{record.primary_diagnosis}</td>
+                    <td>
+                      <Link to={`/hospitalization-record/${record._id}`}>
+                        <MDBBtn className='reportBtn'>View Full Report</MDBBtn>
+                      </Link></td>
+                  </tr>
+                ))}
+              </MDBTableBody>
+            </MDBTable>
+          </MDBContainer>
+
+        </MDBContainer>
+
+      )}</>
+
   )
 }
 

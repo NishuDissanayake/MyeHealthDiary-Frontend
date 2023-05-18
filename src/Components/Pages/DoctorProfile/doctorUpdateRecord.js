@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import './hospitalization.css';
-import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
-import HospImg from './../../../Assets/Hospitalization Record Img.png';
-import { Link } from 'react-router-dom';
+import './doctor.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import HospImg from './../../../Assets/Hospitalization Record Img.png';
 
-function Hospitalization() {
+function DoctorUpdateRecord() {
 
   const [records, setRecords] = useState([]);
   const [treatments, setTreatments] = useState([]);
@@ -26,7 +26,8 @@ function Hospitalization() {
   const getRecords = async () => {
     const nic = '200055702644';
     try {
-      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-medical-record?nic=` + + nic + `&_id=` + id);
+      console.log(id);
+      const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-medical-record?nic=${nic}&_id=${id}`);
       const reportsArray = response.data.medicalRecord;
       setRecords(reportsArray);
     } catch (error) {
@@ -191,11 +192,10 @@ function Hospitalization() {
     }
   };
 
-
   return (
 
     <>
-      {localStorage.getItem('role') !== 'user' ? window.location.href = '/' : (
+      {localStorage.getItem('role') !== 'doctor' ? window.location.href = '/' : (
 
         <MDBContainer>
 
@@ -243,6 +243,11 @@ function Hospitalization() {
               </MDBCol>
               <MDBCol>
                 <img src={HospImg} alt='....' className='hospImgStyles' />
+                <MDBRow>
+                  <Link to={`/update-report/${id}`} className='up-link-rec'>
+                    <MDBBtn className='profBtnL'>Update Data</MDBBtn>
+                  </Link>
+                </MDBRow>
               </MDBCol>
             </MDBRow>
 
@@ -370,7 +375,7 @@ function Hospitalization() {
                   {comments.map((comments) => (
                     <tr key={comments._id}>
                       <td>{comments.date}</td>
-                      <td>{comments.comments}</td>
+                      <td>{comments.comment}</td>
                       <td>{comments.added_by}</td>
                     </tr>
                   ))}
@@ -410,4 +415,4 @@ function Hospitalization() {
   )
 }
 
-export default Hospitalization
+export default DoctorUpdateRecord

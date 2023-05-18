@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './emergencyData.css';
-import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
+import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
 import AllImg from './../../../Assets/Allergy Img.jpg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -62,6 +61,7 @@ function EmergencyData() {
 
 
   return (
+
     <MDBContainer>
 
       <MDBContainer className='uprofileCont2'>
