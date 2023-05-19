@@ -10,7 +10,7 @@ function UpdateReport() {
 
     const { id } = useParams();
     const cur_date = new Date();
-    const added_by = "U001";
+    const added_by = localStorage.getItem('name');
 
     const [treatment, setTreatment] = useState('');
     const [bandb, setBandB] = useState('');

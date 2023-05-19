@@ -179,7 +179,6 @@ function Admindashboard() {
                                         <th scope='col'>Address</th>
                                         <th scope='col'>Phone Number</th>
                                         <th scope='col'>Status</th>
-                                        <th scope='col'>Manage</th>
                                     </tr>
                                 </MDBTableHead>
                                 <MDBTableBody>
@@ -190,9 +189,6 @@ function Admindashboard() {
                                             <td>{hospital.address}</td>
                                             <td>{hospital.phone_number}</td>
                                             <td>{hospital.status}</td>
-                                            <td><Link to="/mood-chart">
-                                                <MDBBtn className='aprofBtn3'>Manage Hospital</MDBBtn>
-                                            </Link></td>
                                         </tr>
                                     ))}
                                 </MDBTableBody>
@@ -265,8 +261,8 @@ function Admindashboard() {
                                             <td>{user.phone_number}</td>
                                             <td>{user.email}</td>
                                             <td>{user.status}</td>
-                                            <td><Link to="/user-emergency">
-                                                <MDBBtn className='aprofBtn3'>View Profile</MDBBtn>
+                                            <td><Link to="/emergency">
+                                                <MDBBtn className='aprofBtn3'>View Emergency Info</MDBBtn>
                                             </Link></td>
                                         </tr>
                                     ))}

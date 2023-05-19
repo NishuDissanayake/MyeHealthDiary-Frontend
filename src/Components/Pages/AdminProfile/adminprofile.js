@@ -14,7 +14,7 @@ function Adminprofile() {
   }, []);
 
   const getUserData = async () => {
-    const email = 'nishu@gmail.com';
+    const email = localStorage.getItem('email');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-admin-by-email?email=${email}`);
       const dataArray = response.data;
@@ -44,9 +44,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-org?_id=" + _id + "&n_organization=" + n_organization);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-org?email=" + email + "&n_organization=" + n_organization);
 
       setOrganization("");
 
@@ -76,9 +76,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-phone?_id=" + _id + "&n_phone=" + n_phone);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-phone?email=" + email + "&n_phone=" + n_phone);
       console.log(res.data);
 
       setPhone("");
@@ -109,9 +109,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-designation?_id=" + _id + "&n_designation=" + n_designation);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-designation?email=" + email + "&n_designation=" + n_designation);
       console.log(res.data);
 
       setDesignation("");
@@ -142,8 +142,8 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = '6416d83564599dc3664c858a';
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-admin-acc?_id=" + _id + "&n_pass=" + n_pass);
+      const email = localStorage.getItem('email');
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-admin-acc?email=" + email + "&n_pass=" + n_pass);
       console.log(res.data);
 
       setPass("");
@@ -173,7 +173,7 @@ function Adminprofile() {
 
         <MDBContainer>
           <MDBContainer className='uprofileCont2'>
-            <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+            <MDBRow className='uprofileT1'>Welcome Back, {localStorage.getItem('name')}</MDBRow>
 
             <MDBRow className='uprofileTbl1'>
               <MDBTable striped>

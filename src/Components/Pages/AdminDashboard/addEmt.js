@@ -17,9 +17,8 @@ function AddDoctor() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const added_by = "U00T";
-
-            const res = await axios.post("https://my-ehealth-diary-backend.herokuapp.com/api/add-emt", { emt_id, emt_name, hospital, designation, phone_number, email, pass, added_by });
+            const added_by = localStorage.getItem('email');
+            const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/add-emt?emt_id=` + emt_id + `&emt_name=`+ emt_name + `&hospital=` + hospital + `&designation=` + designation + `&phone_number=` + phone_number + `&email=` + email + `&added_by=` + added_by + `&pass=` + pass);
             console.log(res.data);
 
             setId("");

@@ -15,7 +15,7 @@ function EmtProfile() {
   }, []);
 
   const getUserData = async () => {
-    const email = 'isuruP@gmail.com';
+    const email = localStorage.getItem('email');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-emt-by-email?email=${email}`);
       const dataArray = response.data;
@@ -175,7 +175,7 @@ function EmtProfile() {
 
         <MDBContainer>
           <MDBContainer className='uprofileCont2'>
-            <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+            <MDBRow className='uprofileT1'>Welcome Back, {localStorage.getItem('name')}</MDBRow>
 
             <MDBRow className='uprofileTbl1'>
               <MDBTable striped>

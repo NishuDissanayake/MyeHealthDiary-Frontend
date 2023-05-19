@@ -93,7 +93,7 @@ function Userhome() {
                     <th scope='col'>Morning</th>
                     <th scope='col'>Afternoon</th>
                     <th scope='col'>Night</th>
-                    <th scope='col'>Revoke Status</th>
+                    <th scope='col'>Revoke</th>
                   </tr>
                 </MDBTableHead>
                 <MDBTableBody>
@@ -108,7 +108,7 @@ function Userhome() {
                       <td>{medicine.noon}</td>
                       <td>{medicine.night}</td>
                       <td><Link to="/mood-chart">
-                        <MDBBtn className='aprofBtn3'>Revoke Status</MDBBtn>
+                        <MDBBtn className='aprofBtn3'>Revoke</MDBBtn>
                       </Link></td>
                     </tr>
                   ))}

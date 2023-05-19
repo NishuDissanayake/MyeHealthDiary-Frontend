@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 function UserEmergency() {
 
   const [userData, setUserData] = useState([]);
-  const [nic, setNIC] = useState("");
+  const nic = localStorage.getItem('nic');
   const [allergydata, setAllergyData] = useState([]);
 
   const handleClick = (event) => {

@@ -23,7 +23,7 @@ export default function EmtLogin() {
     event.preventDefault();
     try {
 
-        const res = await axios.post(`http://localhost:5000/api/emt-login?email=` + email + `&pass=` + pass);
+        const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/emt-login?email=` + email + `&pass=` + pass);
         console.log(res.data);
 
         setEmail("");

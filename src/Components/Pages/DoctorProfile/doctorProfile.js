@@ -14,7 +14,7 @@ function DoctorProfile() {
   }, []);
 
   const getUserData = async () => {
-    const email = 'rasikapTest@gmail.com';
+    const email = localStorage.getItem('email');
     try {
       const response = await axios.get(`https://my-ehealth-diary-backend.herokuapp.com/api/get-doctor-by-email?email=${email}`);
       const dataArray = response.data;
@@ -44,9 +44,9 @@ function DoctorProfile() {
     event.preventDefault();
 
     try {
-      const _id = '64257b8752453202c6958d03';
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-hospital?_id=" + _id + "&n_hospital=" + n_hospital);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-hospital?email=" + email + "&n_hospital=" + n_hospital);
 
       setHospital("");
       console.log(n_hospital);
@@ -77,9 +77,9 @@ function DoctorProfile() {
     event.preventDefault();
 
     try {
-      const _id = '64257b8752453202c6958d03';
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-phone?_id=" + _id + "&n_phone=" + n_phone);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-phone?email=" + email + "&n_phone=" + n_phone);
       console.log(res.data);
 
       setPhone("");
@@ -110,9 +110,9 @@ function DoctorProfile() {
     event.preventDefault();
 
     try {
-      const _id = '64257b8752453202c6958d03';
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-qualifications?_id=" + _id + "&n_qualifications=" + n_qualifications);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-doctor-qualifications?email=" + email + "&n_qualifications=" + n_qualifications);
       console.log(res.data);
 
       setQualifications("");
@@ -143,8 +143,8 @@ function DoctorProfile() {
     event.preventDefault();
 
     try {
-      const _id = '64257b8752453202c6958d03';
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-doctor?_id=" + _id + "&n_pass=" + n_pass);
+      const email = localStorage.getItem('email');
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-doctor?email=" + email + "&n_pass=" + n_pass);
       console.log(res.data);
 
       setPass("");
@@ -174,7 +174,7 @@ function DoctorProfile() {
 
         <MDBContainer>
           <MDBContainer className='uprofileCont2'>
-            <MDBRow className='uprofileT1'>Welcome Back, User!</MDBRow>
+            <MDBRow className='uprofileT1'>Welcome Back, {localStorage.getItem('name')}</MDBRow>
 
             <MDBRow className='uprofileTbl1'>
               <MDBTable striped>
