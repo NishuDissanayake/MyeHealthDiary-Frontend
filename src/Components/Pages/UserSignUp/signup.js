@@ -173,6 +173,9 @@ export default function Signup() {
                         </MDBCol>
                     </MDBRow>
                     <MDBRow>
+                        <b>*Please note that you are agreeing to complete concent over utilizing your personal medical data for research and academic purposes by registering to this application. Thank you for your contribution!</b>
+                    </MDBRow>
+                    <MDBRow>
                         <div className='signBtnCen'>
                             <MDBBtn type='submit' className='mb-4 btnSign' block>Sign Up</MDBBtn>
                         </div>

@@ -33,6 +33,8 @@ import DoctorUpdateRecord from './Components/Pages/DoctorProfile/doctorUpdateRec
 import updateReport from './Components/Pages/DoctorProfile/updateReport';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import UpdateReport from './Components/Pages/DoctorProfile/updateReport';
+import DiseasePrediction from './Components/Pages/DoctorProfile/diseasePrediction';
+import ContactUs from './Components/Pages/ContactUs/contactUs';
 
 function App() {
   return (
@@ -67,9 +69,11 @@ function App() {
         <Route path="/add-vaccine" element={<AddVaccine />} />
         <Route path="/add-current-meds" element={<DoctorCurMeds />} />
         <Route path="/doctor-profile" element={<DoctorProfile />} />
+        <Route path="/predict" element={<DiseasePrediction />} />
         <Route path="/find-user-record" element={<DoctorFindRecord />} />
         <Route path="/update-user-record/:id" element={<DoctorUpdateRecord />} />
         <Route path="/update-report/:id" element={<UpdateReport />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
       <Footer />
       </div>

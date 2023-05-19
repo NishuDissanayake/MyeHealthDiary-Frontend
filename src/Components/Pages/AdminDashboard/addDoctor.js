@@ -20,8 +20,7 @@ function AddDoctor() {
         event.preventDefault();
         try {
             const added_by = localStorage.getItem('email');
-
-            const res = await axios.post("https://my-ehealth-diary-backend.herokuapp.com/api/add-doctor", { doctor_id, doctor_name, hospital, specialization, qualifications, phone_number, email, added_by, pass });
+            const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/add-doctor?doctor_id=` + doctor_id + `&doctor_name=`+ doctor_name + `&hospital=` + hospital + `&specialization=` + specialization + `&qualifications=` + qualifications + `&phone_number=` + phone_number + `&email=` + email + `&added_by=` + added_by +`&pass=` + pass);
             console.log(res.data);
 
             setId("");

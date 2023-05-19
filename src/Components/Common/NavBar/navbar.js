@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './../../../Assets/My eHealth Diary.png';
+import logo from './../../../Assets/Logo-Light.png';
 import './navbar.css';
 import {
     MDBNavbar,
@@ -130,13 +130,20 @@ export default function Navbar() {
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                         )}
+                        {localStorage.getItem('role') !== 'doctor' ? <></> : (
+                            <MDBNavbarItem>
+                                <MDBNavbarLink className='navTextCol' tag={Link} to='/predict'>
+                                    Disease Prediction
+                                </MDBNavbarLink>
+                            </MDBNavbarItem>
+                        )}
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' tag={Link} to='https://www.blog.myehealthdiary.me/'>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='https://www.blog.myehealthdiary.me/' target='_blanc'>
                                 Blog
                             </MDBNavbarLink>
                         </MDBNavbarItem>
                         <MDBNavbarItem>
-                            <MDBNavbarLink className='navTextCol' tag={Link} to='https://forum.myehealthdiary.me/'>
+                            <MDBNavbarLink className='navTextCol' tag={Link} to='https://forum.myehealthdiary.me/' target='_blanc'>
                                 Forum
                             </MDBNavbarLink>
                         </MDBNavbarItem>

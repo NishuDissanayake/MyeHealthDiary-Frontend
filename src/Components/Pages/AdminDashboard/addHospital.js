@@ -14,8 +14,7 @@ function AddHospital() {
         event.preventDefault();
         try {
             const added_by = localStorage.getItem('email');
-
-            const res = await axios.post("https://my-ehealth-diary-backend.herokuapp.com/api/add-hospital", { hospital_regno, hospital_name, address, phone_number, added_by });
+            const res = await axios.post(`https://my-ehealth-diary-backend.herokuapp.com/api/add-hospital?hospital_regno=` + hospital_regno + `&hospital_name=`+ hospital_name + `&address=` + address + `&phone_number=` + phone_number +  `&added_by=` + added_by);
             console.log(res.data);
 
             setHospitalRegNo("");

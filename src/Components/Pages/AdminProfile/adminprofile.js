@@ -44,9 +44,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = localStorage.getItem('userId');
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-org?_id=" + _id + "&n_organization=" + n_organization);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-org?email=" + email + "&n_organization=" + n_organization);
 
       setOrganization("");
 
@@ -76,9 +76,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = localStorage.getItem('userId');
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-phone?_id=" + _id + "&n_phone=" + n_phone);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-phone?email=" + email + "&n_phone=" + n_phone);
       console.log(res.data);
 
       setPhone("");
@@ -109,9 +109,9 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = localStorage.getItem('userId');
+      const email = localStorage.getItem('email');
 
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-designation?_id=" + _id + "&n_designation=" + n_designation);
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/update-admin-designation?email=" + email + "&n_designation=" + n_designation);
       console.log(res.data);
 
       setDesignation("");
@@ -142,8 +142,8 @@ function Adminprofile() {
     event.preventDefault();
 
     try {
-      const _id = localStorage.getItem('userId');
-      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-admin-acc?_id=" + _id + "&n_pass=" + n_pass);
+      const email = localStorage.getItem('email');
+      const res = await axios.put("https://my-ehealth-diary-backend.herokuapp.com/api/delete-admin-acc?email=" + email + "&n_pass=" + n_pass);
       console.log(res.data);
 
       setPass("");
